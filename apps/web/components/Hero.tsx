@@ -5,16 +5,7 @@ export default function Hero() {
       <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
       <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
       
-      <div className="mx-auto max-w-6xl relative z-10 pt-12 pb-16 pl-2 pr-8">
-        {/* Логотип */}
-        <div className="mb-8">
-          <div className="inline-flex items-center gap-2 text-sm font-medium text-amber-800">
-            <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
-            МЫ ПЛЮС ВЫ
-          </div>
-          {/* Декоративная линия */}
-          <div className="mt-4 w-16 h-0.5 bg-amber-600"></div>
-        </div>
+      <div className="mx-auto max-w-6xl relative z-10 pt-8 pb-16 pl-2 pr-8">
         
         {/* Главный заголовок */}
         <div className="mb-12">
