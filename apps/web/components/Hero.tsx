@@ -53,7 +53,7 @@ export default function Hero() {
           
           {/* Правая колонка - изображение */}
           <div className="order-2 md:order-2">
-            <div className="relative">
+            <div className="relative mt-8">
               <img 
                 src="/images/lady-Photoroom.png" 
                 alt="Портрет дамы в театральном костюме" 
