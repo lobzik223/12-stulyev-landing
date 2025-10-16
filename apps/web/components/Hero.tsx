@@ -60,13 +60,13 @@ export default function Hero() {
         </div>
       </Container>
       
-      {/* Рваный край */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-amber-100 to-transparent" 
-           style={{
-             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 L80,70 160,50 220,80 300,40 360,85 430,55 500,90 570,45 640,80 720,52 800,88 880,50 960,78 1040,58 1120,82 1200,60 1200,120 0,120 Z' fill='%23f59e0b'/%3E%3C/svg%3E")`,
-             backgroundSize: 'cover',
-             backgroundPosition: 'top'
-           }} />
+             {/* Рваный край */}
+             <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-900 to-transparent" 
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 L80,70 160,50 220,80 300,40 360,85 430,55 500,90 570,45 640,80 720,52 800,88 880,50 960,78 1040,58 1120,82 1200,60 1200,120 0,120 Z' fill='%23111111'/%3E%3C/svg%3E")`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'top'
+                  }} />
     </section>
   );
 }

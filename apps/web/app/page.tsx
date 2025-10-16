@@ -25,6 +25,7 @@ export default async function Page() {
   return (
     <>
       <Hero />
+      <SectionDivider variant="light" height={96} />
       <Events items={events} />
       <SectionDivider variant="dark" height={96} />
 
