@@ -2,10 +2,10 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden">
       {/* Декоративные элементы - Звезды */}
-      <svg className="absolute top-20 right-20 w-10 h-10 text-amber-400 opacity-30 z-20" fill="currentColor" viewBox="0 0 24 24">
+      <svg className="absolute top-20 right-20 w-10 h-10 text-blue-400 opacity-30 z-20" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
       </svg>
-      <svg className="absolute bottom-20 left-20 w-8 h-8 text-amber-400 opacity-40 z-20" fill="currentColor" viewBox="0 0 24 24">
+      <svg className="absolute bottom-20 left-20 w-8 h-8 text-blue-400 opacity-40 z-20" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
       </svg>
       
