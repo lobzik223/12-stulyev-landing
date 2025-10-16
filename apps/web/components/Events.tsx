@@ -30,7 +30,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 80) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 80) * 0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 80) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 80) * 0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -42,7 +42,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 80) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 80) * -0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 80) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 80) * -0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -54,7 +54,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 60) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 60) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -66,7 +66,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 60) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 60) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -78,7 +78,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 60) * 0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 60) * 0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -90,7 +90,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 60) * -0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 60) * -0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -114,7 +114,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 120) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 120) * 0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 120) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 120) * 0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -126,7 +126,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.01))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.01))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * 0.01))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.01))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>

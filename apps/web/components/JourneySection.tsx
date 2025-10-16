@@ -50,7 +50,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 100) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 100) * 0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 100) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 100) * 0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -62,7 +62,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 100) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 100) * -0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 100) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 100) * -0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -74,7 +74,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 100) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 100) * 0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 100) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 100) * 0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -86,7 +86,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 80) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 80) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -98,7 +98,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 80) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 80) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -110,7 +110,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 80) * 0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 80) * 0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -122,7 +122,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 80) * -0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 80) * -0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -134,7 +134,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.01))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.01))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * 0.01))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.01))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -145,10 +145,9 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                  <div className="inline-block px-4 py-2 bg-amber-400/10 border border-amber-400/30 rounded-full text-sm font-medium text-amber-400 mb-4">
                    Маршрут
                  </div>
-                 <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Путешествие по городам</h2>
+                 <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">«12 стульев — театральное путешествие по России Ильфа и Петрова»</h2>
                  <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Следуйте за Остапом Бендером по маршруту от Старгорода до Москвы. 
-            Каждый город — новая глава в истории поиска сокровища.
+            От Старгорода до Москвы. Следуй за Бендером!
           </p>
         </div>
           
