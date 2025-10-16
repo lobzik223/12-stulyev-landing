@@ -8,7 +8,8 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
   const scroller = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="events" className="py-16 bg-[#0e0b09] text-white">
+    <section id="events" className="relative py-16 bg-[#0e0b09] text-white">
+      <div className="pointer-events-none select-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-transparent to-[#0e0b09]" />
       <Container>
         <h2 className="text-3xl font-semibold">Ближайшие даты</h2>
 
