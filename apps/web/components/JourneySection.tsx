@@ -98,6 +98,17 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
               }}
               className="snap-start w-[320px] shrink-0 rounded-2xl overflow-hidden relative border border-[#D4AF37]/20 bg-black journey-card group"
             >
+              {/* Декоративные элементы */}
+              <motion.div
+                className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                initial={{ scale: 0, rotate: -10 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.5 + index * 0.1, duration: 0.3 }}
+              >
+                {index % 3 === 0 && <img src="/decors/train.svg" alt="Поезд" className="w-8 h-8" />}
+                {index % 3 === 1 && <img src="/decors/suitcase.svg" alt="Чемодан" className="w-8 h-8" />}
+                {index % 3 === 2 && <img src="/decors/chess.svg" alt="Шахматы" className="w-8 h-8" />}
+              </motion.div>
               {/* Анимированный градиент при наведении */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"

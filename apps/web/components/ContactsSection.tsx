@@ -21,9 +21,22 @@ export default function ContactsSection({ data }: Readonly<{ data: Contacts }>) 
           </div>
           <div>
             <div className="opacity-90 mb-3">Партнёры:</div>
-            <div className="flex flex-wrap gap-3">
+            <div className="grid grid-cols-2 gap-4">
               {(data.partners||[]).map(p=>(
-                <a key={p.id} href={p.url||"#"} className="rounded-xl border border-[#D4AF37]/30 px-4 py-2 opacity-90 hover:opacity-100">{p.name}</a>
+                <a 
+                  key={p.id} 
+                  href={p.url||"#"} 
+                  className="flex items-center gap-3 rounded-xl border border-[#D4AF37]/30 px-4 py-3 opacity-90 hover:opacity-100 hover:border-[#D4AF37]/60 transition-all duration-300 group"
+                >
+                  {p.logo && (
+                    <img 
+                      src={p.logo} 
+                      alt={p.name} 
+                      className="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300"
+                    />
+                  )}
+                  <span className="text-sm font-medium">{p.name}</span>
+                </a>
               ))}
             </div>
           </div>
