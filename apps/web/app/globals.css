@@ -23,6 +23,59 @@ body {
   background: #0e0b09;
   color: white;
   font-family: var(--font-sans), system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Улучшенные стили для красоты */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Красивые скроллбары */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0b09;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8941F;
+}
+
+/* Анимации появления */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Улучшенные тени */
+.shadow-gold {
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3);
+}
+
+.shadow-gold-lg {
+  box-shadow: 0 16px 48px rgba(212, 175, 55, 0.4);
 }
 
 /* Скрываем полосу прокрутки во всех браузерах */

@@ -17,10 +17,20 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
   };
 
   return (
-    <section id="events" className="relative py-16 bg-[#0e0b09] text-white">
+    <section id="events" className="relative py-20 bg-gradient-to-b from-[#0e0b09] to-[#15110E] text-white overflow-hidden">
+      {/* Декоративные элементы */}
+      <div className="absolute top-10 left-10 w-20 h-20 border border-[#D4AF37]/10 rounded-full" />
+      <div className="absolute bottom-10 right-10 w-16 h-16 border border-[#D4AF37]/20 rounded-full" />
+      
       <Container>
-        <div className="flex items-center justify-between gap-4">
-          <h2 className="text-3xl font-semibold">Ближайшие даты</h2>
+        <div className="flex items-center justify-between gap-4 mb-12">
+          <div>
+            <div className="inline-block px-3 py-1 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full text-sm font-medium text-[#D4AF37] mb-3">
+              Расписание
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold">Ближайшие даты</h2>
+            <p className="mt-3 text-lg opacity-80">Выберите город и купите билеты</p>
+          </div>
           <div className="hidden md:flex items-center gap-3">
             <ArrowButton dir="left" onClick={() => scrollBy("left")} />
             <ArrowButton dir="right" onClick={() => scrollBy("right")} />
