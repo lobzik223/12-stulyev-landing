@@ -8,10 +8,10 @@ export default function TrailerSection({ data }: Readonly<{ data: Trailer }>) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section id="trailer" className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 relative overflow-hidden">
-      {/* Декоративные элементы */}
-      <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
-      <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
+           <section id="trailer" className="py-20 bg-gray-900 text-white relative overflow-hidden">
+             {/* Декоративные элементы */}
+             <div className="absolute top-20 right-20 w-32 h-32 border border-amber-400/20 rounded-full" />
+             <div className="absolute bottom-20 left-20 w-24 h-24 border border-amber-400/30 rounded-full" />
       
       <Container>
         <motion.div
@@ -20,15 +20,15 @@ export default function TrailerSection({ data }: Readonly<{ data: Trailer }>) {
           transition={{ duration: 0.6 }}
         >
           <div className="text-center mb-12">
-            <div className="inline-block px-4 py-2 bg-amber-600/10 border border-amber-600/30 rounded-full text-sm font-medium text-amber-800 mb-4">
-              Видео
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Трейлер</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">{data.title}</p>
+                   <div className="inline-block px-4 py-2 bg-amber-400/10 border border-amber-400/30 rounded-full text-sm font-medium text-amber-400 mb-4">
+                     Видео
+                   </div>
+                   <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Трейлер</h2>
+                   <p className="text-lg text-gray-300 max-w-2xl mx-auto">{data.title}</p>
           </div>
           
           <motion.div 
-            className="mt-8 aspect-video rounded-2xl overflow-hidden ring-1 ring-[#D4AF37]/30 relative group"
+            className="mt-8 aspect-video rounded-2xl overflow-hidden ring-1 ring-amber-400/30 relative group"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >

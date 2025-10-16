@@ -25,18 +25,18 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
   };
 
   return (
-    <section id="journey" className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 relative overflow-hidden">
-      {/* Декоративные элементы */}
-      <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
-      <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
+           <section id="journey" className="py-20 bg-gray-900 text-white relative overflow-hidden">
+             {/* Декоративные элементы */}
+             <div className="absolute top-20 right-20 w-32 h-32 border border-amber-400/20 rounded-full" />
+             <div className="absolute bottom-20 left-20 w-24 h-24 border border-amber-400/30 rounded-full" />
       
       <Container>
         <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-amber-600/10 border border-amber-600/30 rounded-full text-sm font-medium text-amber-800 mb-4">
-            Маршрут
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Путешествие по городам</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                 <div className="inline-block px-4 py-2 bg-amber-400/10 border border-amber-400/30 rounded-full text-sm font-medium text-amber-400 mb-4">
+                   Маршрут
+                 </div>
+                 <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Путешествие по городам</h2>
+                 <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Следуйте за Остапом Бендером по маршруту от Старгорода до Москвы. 
             Каждый город — новая глава в истории поиска сокровища.
           </p>
@@ -49,10 +49,10 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
             disabled={currentIndex === 0}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`p-3 rounded-full border border-amber-300 transition-all ${
+            className={`p-3 rounded-full border border-amber-400/30 transition-all ${
               currentIndex === 0
                 ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-amber-100 hover:border-amber-400'
+                : 'hover:bg-amber-400/10 hover:border-amber-400/60'
             }`}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,10 +65,10 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
             disabled={currentIndex === items.length - 1}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`p-3 rounded-full border border-amber-300 transition-all ${
+            className={`p-3 rounded-full border border-amber-400/30 transition-all ${
               currentIndex === items.length - 1
                 ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-amber-100 hover:border-amber-400'
+                : 'hover:bg-amber-400/10 hover:border-amber-400/60'
             }`}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
