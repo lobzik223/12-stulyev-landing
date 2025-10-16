@@ -1,0 +1,26 @@
+# node / next
+node_modules
+.next
+out
+dist
+.cache
+.pnp*
+coverage
+
+# env
+*.env
+*.env.*
+apps/web/.env.local
+apps/cms/.env
+apps/cms/.tmp
+apps/cms/build
+
+# strapi
+apps/cms/.cache
+apps/cms/build
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode
+.idea
