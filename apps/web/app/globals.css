@@ -172,6 +172,105 @@ html {
          animation: particleFloat 7s ease-in-out infinite;
        }
 
+       /* Анимации для звездочек */
+       @keyframes starFloat1 {
+         0%, 100% { transform: translate(0, 0) rotate(0deg); }
+         25% { transform: translate(2px, -3px) rotate(2deg); }
+         50% { transform: translate(-1px, -5px) rotate(-1deg); }
+         75% { transform: translate(3px, -2px) rotate(1deg); }
+       }
+
+       @keyframes starFloat2 {
+         0%, 100% { transform: translate(0, 0) rotate(0deg); }
+         30% { transform: translate(-2px, 3px) rotate(-2deg); }
+         60% { transform: translate(1px, 4px) rotate(1deg); }
+         90% { transform: translate(-3px, 1px) rotate(-1deg); }
+       }
+
+       @keyframes starFloat3 {
+         0%, 100% { transform: translate(0, 0) rotate(0deg); }
+         20% { transform: translate(3px, -2px) rotate(1deg); }
+         40% { transform: translate(-1px, -4px) rotate(-1deg); }
+         60% { transform: translate(2px, -1px) rotate(2deg); }
+         80% { transform: translate(-2px, -3px) rotate(-1deg); }
+       }
+
+       @keyframes starFloat4 {
+         0%, 100% { transform: translate(0, 0) rotate(0deg); }
+         35% { transform: translate(-3px, 2px) rotate(-2deg); }
+         70% { transform: translate(1px, 3px) rotate(1deg); }
+       }
+
+       @keyframes starFloat5 {
+         0%, 100% { transform: translate(0, 0) rotate(0deg); }
+         15% { transform: translate(2px, -4px) rotate(1deg); }
+         45% { transform: translate(-2px, -2px) rotate(-1deg); }
+         75% { transform: translate(4px, -1px) rotate(2deg); }
+       }
+
+       @keyframes starFloat6 {
+         0%, 100% { transform: translate(0, 0) rotate(0deg); }
+         25% { transform: translate(-1px, 3px) rotate(-1deg); }
+         50% { transform: translate(2px, 1px) rotate(1deg); }
+         75% { transform: translate(-3px, 2px) rotate(-2deg); }
+       }
+
+       @keyframes starFloat7 {
+         0%, 100% { transform: translate(0, 0) rotate(0deg); }
+         40% { transform: translate(3px, -1px) rotate(1deg); }
+         80% { transform: translate(-2px, -3px) rotate(-1deg); }
+       }
+
+       @keyframes starFloat8 {
+         0%, 100% { transform: translate(0, 0) rotate(0deg); }
+         30% { transform: translate(-3px, 2px) rotate(-2deg); }
+         60% { transform: translate(1px, 4px) rotate(1deg); }
+         90% { transform: translate(-1px, 1px) rotate(-1deg); }
+       }
+
+       @keyframes starFloat9 {
+         0%, 100% { transform: translate(0, 0) rotate(0deg); }
+         20% { transform: translate(2px, -3px) rotate(1deg); }
+         50% { transform: translate(-1px, -2px) rotate(-1deg); }
+         80% { transform: translate(3px, -1px) rotate(2deg); }
+       }
+
+       .animate-star-float-1 {
+         animation: starFloat1 8s ease-in-out infinite;
+       }
+
+       .animate-star-float-2 {
+         animation: starFloat2 10s ease-in-out infinite;
+       }
+
+       .animate-star-float-3 {
+         animation: starFloat3 12s ease-in-out infinite;
+       }
+
+       .animate-star-float-4 {
+         animation: starFloat4 9s ease-in-out infinite;
+       }
+
+       .animate-star-float-5 {
+         animation: starFloat5 11s ease-in-out infinite;
+       }
+
+       .animate-star-float-6 {
+         animation: starFloat6 7s ease-in-out infinite;
+       }
+
+       .animate-star-float-7 {
+         animation: starFloat7 13s ease-in-out infinite;
+       }
+
+       .animate-star-float-8 {
+         animation: starFloat8 9s ease-in-out infinite;
+       }
+
+       .animate-star-float-9 {
+         animation: starFloat9 15s ease-in-out infinite;
+       }
+
        /* зигзаг-разделитель между постером и бумажным блоком */
        .zigzag {
          position: relative;
@@ -186,4 +285,4 @@ html {
          background: #fef3c7;
          clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
          z-index: 1;
-       }
+}
