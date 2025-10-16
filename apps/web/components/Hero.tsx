@@ -5,45 +5,45 @@ export default function Hero() {
       <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
       <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
       
-      <div className="mx-auto max-w-6xl relative z-10 pt-8 pb-16 pl-2 pr-8">
+      <div className="mx-auto max-w-6xl relative z-10 pt-12 pb-20 pl-4 pr-8">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Левая колонка - контент */}
           <div className="order-1 md:order-1">
             {/* Главный заголовок */}
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                <span className="block text-gray-900 font-serif">«<span className="text-6xl md:text-7xl">12</span> СТУЛЬЕВ»</span>
-                <span className="block text-amber-700 font-script text-3xl md:text-4xl mt-2">театральное</span>
-                <span className="block text-gray-900 font-serif text-4xl md:text-6xl">ПУТЕШЕСТВИЕ</span>
+            <div className="mb-16">
+              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+                <span className="block text-gray-900 font-serif">«<span className="text-7xl md:text-8xl">12</span> СТУЛЬЕВ»</span>
+                <span className="block text-amber-700 font-script text-4xl md:text-5xl mt-2">театральное</span>
+                <span className="block text-gray-900 font-serif text-5xl md:text-7xl">ПУТЕШЕСТВИЕ</span>
               </h1>
             </div>
             
             {/* Описание */}
-            <div className="max-w-3xl mb-16">
-              <p className="text-lg leading-relaxed text-gray-700 mb-6">
+            <div className="max-w-3xl mb-20">
+              <p className="text-xl leading-relaxed text-gray-700 mb-6 font-medium">
                 КЛАССИЧЕСКАЯ КОМЕДИЯ ИЛЬФА И ПЕТРОВА В СОВРЕМЕННОЙ ТЕАТРАЛЬНОЙ ИНТЕРПРЕТАЦИИ
               </p>
-              <p className="text-base text-gray-600">
+              <p className="text-lg text-gray-600 leading-relaxed">
                 Следуйте за Остапом Бендером в поисках сокровища, спрятанного в одном из двенадцати стульев
               </p>
             </div>
             
             {/* Кнопки */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-6">
               <a
                 href="#events"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-colors duration-300 shadow-lg"
+                className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-amber-600 text-white font-semibold rounded-xl hover:bg-amber-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 text-lg"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
                 Посмотреть расписание
               </a>
               <a
                 href="#about"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-amber-600 text-amber-700 font-semibold rounded-lg hover:bg-amber-50 transition-colors duration-300"
+                className="inline-flex items-center justify-center gap-3 px-10 py-5 border-2 border-amber-600 text-amber-700 font-semibold rounded-xl hover:bg-amber-50 hover:border-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-lg"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 О спектакле
