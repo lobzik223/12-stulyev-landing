@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+  --gold: #D4AF37;
+}
+
+.font-serif {
+  font-family: var(--font-serif), serif;
+}
+
+.font-sans {
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif), serif;
+  letter-spacing: 0.2px;
+}
+
+body {
+  background: #0e0b09;
+  color: white;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
