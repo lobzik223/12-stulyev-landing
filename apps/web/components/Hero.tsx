@@ -2,8 +2,8 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden">
       {/* Декоративные элементы */}
-      <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
-      <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
+      <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30 z-20" />
+      <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40 z-20" />
       
       <div className="mx-auto max-w-6xl relative z-10 pt-4 pl-4 pr-8">
         <div className="grid md:grid-cols-2 gap-8 items-center mt-4">
