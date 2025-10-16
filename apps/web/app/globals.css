@@ -54,17 +54,10 @@ body {
 .zigzag::before {
   content: "";
   position: absolute;
-  inset: -1px 0 auto 0; /* по верху бумажного блока */
-  height: 14px;
-  background:
-    radial-gradient(10px 7px at 10px 9px, transparent 70%, var(--paper) 72%) repeat-x;
-  background-size: 20px 14px;
-  background-position: -10px 0;
-  /* создаём «зубчики» */
-  -webkit-mask:
-    linear-gradient(#000 0 0) top/100% 7px no-repeat,
-    linear-gradient(#000 0 0);
-  mask:
-    linear-gradient(#000 0 0) top/100% 7px no-repeat,
-    linear-gradient(#000 0 0);
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: var(--paper);
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
 }

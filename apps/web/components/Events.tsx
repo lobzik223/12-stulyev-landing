@@ -12,7 +12,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
     const root = scroller.current;
     if (!root) return;
     const card = root.querySelector("article");
-    const step = (card?.clientWidth || 320) + 24; // ширина карточки + gap
+    const step = (card?.clientWidth || 280) + 24; // ширина карточки + gap
     root.scrollBy({ left: dir === "left" ? -step : step, behavior: "smooth" });
   };
 
@@ -33,7 +33,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
           className="mt-8 flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-1"
         >
           {items.map((ev) => (
-            <div key={ev.id} className="snap-start w-[320px] shrink-0">
+            <div key={ev.id} className="snap-start shrink-0">
               <TicketCard ev={ev} />
             </div>
           ))}

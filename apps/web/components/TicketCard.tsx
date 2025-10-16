@@ -5,26 +5,26 @@ export default function TicketCard({ ev }: Readonly<{ ev: EventItem }>) {
   const date = new Date(ev.dateTime).toLocaleString("ru-RU", { dateStyle: "long", timeStyle: "short" });
 
   return (
-    <article className="rounded-2xl overflow-hidden ring-1 ring-[rgba(212,175,55,0.25)] bg-black/80 backdrop-blur-[1px] group">
+    <article className="w-[280px] h-[400px] rounded-2xl overflow-hidden bg-white group">
       {/* Постер */}
       <div
-        className="aspect-[4/5] bg-center bg-cover"
+        className="w-full h-[240px] bg-center bg-cover"
         style={{ backgroundImage: `url(${poster})` }}
         aria-hidden
       />
-      {/* Бумажный блок */}
-      <div className="relative bg-[var(--paper)] text-[var(--paper-text)] zigzag">
-        <div className="px-5 pt-5 pb-4">
-          <div className="text-sm tracking-wide opacity-80">{date}</div>
-          <h3 className="mt-1 text-xl font-semibold leading-snug">
+      
+      {/* Бумажный блок с зигзагом */}
+      <div className="relative bg-[var(--paper)] text-[var(--paper-text)] h-[160px] zigzag">
+        <div className="px-4 pt-6 pb-4 h-full flex flex-col">
+          <div className="text-xs text-gray-600 mb-1">{date}</div>
+          <h3 className="text-lg font-bold leading-tight mb-2">
             {ev.title}
           </h3>
-          <div className="opacity-80">{ev.city}{ev.venue ? ` — ${ev.venue}` : ""}</div>
+          <div className="text-sm text-gray-600 mb-4">{ev.city}{ev.venue ? ` — ${ev.venue}` : ""}</div>
 
-          <div className="mt-5 flex items-center gap-4">
-            {/* Цена — если есть; если нет, можно скрыть блок */}
+          <div className="mt-auto flex items-center justify-between">
             {ev.price !== undefined && (
-              <div className="text-lg font-semibold">
+              <div className="text-xl font-bold text-[var(--paper-text)]">
                 {Intl.NumberFormat("ru-RU").format(ev.price)} ₽
               </div>
             )}
@@ -33,7 +33,7 @@ export default function TicketCard({ ev }: Readonly<{ ev: EventItem }>) {
               href={ev.ticketUrl || "#"}
               target="_blank"
               rel="noreferrer"
-              className="ml-auto inline-flex items-center gap-2 rounded-full px-5 py-2 border border-[var(--paper-text)]/35 hover:border-[var(--paper-text)]/60 text-[var(--paper-text)] hover:bg-[var(--paper-text)]/6 transition"
+              className="inline-flex items-center px-4 py-2 rounded-lg border border-[var(--paper-text)]/30 hover:border-[var(--paper-text)]/60 text-[var(--paper-text)] hover:bg-[var(--paper-text)]/5 transition text-sm font-medium"
             >
               Купить
             </a>
