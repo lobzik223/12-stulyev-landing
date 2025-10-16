@@ -78,9 +78,8 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
             </motion.button>
           </div>
         </div>
-      </Container>
 
-      <div className="mt-8 overflow-x-auto scrollbar-hide px-4 md:px-8" ref={containerRef}>
+        <div className="mt-8 overflow-x-auto scrollbar-hide px-4 md:px-8" ref={containerRef}>
         <div className="flex gap-6 min-w-[700px] snap-x snap-mandatory journey-section">
           {items.map((c, index) => (
                    <motion.article
@@ -161,6 +160,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
           ))}
         </div>
       </div>
+      </Container>
     </section>
   );
 }
