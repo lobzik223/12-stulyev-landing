@@ -12,9 +12,9 @@ export default function Hero() {
             {/* Главный заголовок */}
             <div className="mb-12">
               <h1 className="text-6xl md:text-8xl font-bold leading-tight">
-                <span className="block text-gray-900 font-serif">«12 СТУЛЬЕВ»</span>
-                <span className="block text-amber-700 font-script text-5xl md:text-6xl mt-2">театральное</span>
-                <span className="block text-gray-900 font-serif text-6xl md:text-8xl">ПУТЕШЕСТВИЕ</span>
+                <span className="block text-gray-900 font-serif">
+                  «<span className="text-8xl md:text-9xl">12</span> СТУЛЬЕВ» театральное ПУТЕШЕСТВИЕ
+                </span>
               </h1>
             </div>
             
