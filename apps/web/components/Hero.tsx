@@ -71,6 +71,17 @@ export default function Hero() {
           <div className="absolute top-6 right-1/3 w-1 h-1 bg-amber-300/40 rounded-full particle-animated" style={{animationDelay: '1s'}}></div>
           <div className="absolute top-8 left-1/2 w-1.5 h-1.5 bg-amber-500/20 rounded-full particle-animated" style={{animationDelay: '2s'}}></div>
           <div className="absolute top-2 right-1/4 w-1 h-1 bg-amber-400/50 rounded-full particle-animated" style={{animationDelay: '3s'}}></div>
+          
+          {/* Дополнительные частицы */}
+          <div className="absolute top-3 left-1/6 w-1.5 h-1.5 bg-amber-600/40 rounded-full particle-animated" style={{animationDelay: '0.5s'}}></div>
+          <div className="absolute top-7 right-1/6 w-1 h-1 bg-amber-300/60 rounded-full particle-animated" style={{animationDelay: '1.5s'}}></div>
+          <div className="absolute top-5 left-2/3 w-2 h-2 bg-amber-500/25 rounded-full particle-animated" style={{animationDelay: '2.5s'}}></div>
+          <div className="absolute top-1 right-1/2 w-1.5 h-1.5 bg-amber-400/35 rounded-full particle-animated" style={{animationDelay: '3.5s'}}></div>
+          
+          {/* Магические искры */}
+          <div className="absolute top-6 left-1/3 w-0.5 h-0.5 bg-white/80 rounded-full animate-ping" style={{animationDelay: '0.8s'}}></div>
+          <div className="absolute top-4 right-2/3 w-0.5 h-0.5 bg-white/60 rounded-full animate-ping" style={{animationDelay: '2.2s'}}></div>
+          <div className="absolute top-9 left-1/5 w-0.5 h-0.5 bg-white/70 rounded-full animate-ping" style={{animationDelay: '1.8s'}}></div>
         </div>
       </div>
     </section>

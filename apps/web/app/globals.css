@@ -124,12 +124,49 @@ html {
          75% { transform: translateY(-6px) translateX(1px); opacity: 0.8; }
        }
 
+       /* Новые анимации */
+       @keyframes tornEdgeWave {
+         0%, 100% { transform: translateY(0px) scaleY(1); }
+         25% { transform: translateY(-3px) scaleY(1.05); }
+         50% { transform: translateY(-1px) scaleY(0.95); }
+         75% { transform: translateY(-4px) scaleY(1.02); }
+       }
+
+       @keyframes particleGlow {
+         0%, 100% { 
+            transform: translateY(0px) scale(1); 
+            opacity: 0.3; 
+            box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+          }
+         25% { 
+            transform: translateY(-5px) scale(1.2); 
+            opacity: 0.8; 
+            box-shadow: 0 0 8px 2px rgba(245, 158, 11, 0.6);
+          }
+         50% { 
+            transform: translateY(-2px) scale(0.8); 
+            opacity: 0.5; 
+            box-shadow: 0 0 4px 1px rgba(245, 158, 11, 0.4);
+          }
+         75% { 
+            transform: translateY(-7px) scale(1.1); 
+            opacity: 0.9; 
+            box-shadow: 0 0 12px 3px rgba(245, 158, 11, 0.8);
+          }
+       }
+
+       @keyframes tornEdgeRipple {
+         0% { transform: translateY(0px) scaleX(1); }
+         50% { transform: translateY(-2px) scaleX(1.1); }
+         100% { transform: translateY(0px) scaleX(1); }
+       }
+
        .torn-edge-animated {
-         animation: tornEdgeFloat 8s ease-in-out infinite;
+         animation: tornEdgeWave 6s ease-in-out infinite, tornEdgeRipple 4s ease-in-out infinite;
        }
 
        .particle-animated {
-         animation: particleFloat 6s ease-in-out infinite;
+         animation: particleGlow 5s ease-in-out infinite;
        }
 
        /* зигзаг-разделитель между постером и бумажным блоком */
