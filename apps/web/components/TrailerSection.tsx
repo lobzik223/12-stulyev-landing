@@ -8,15 +8,24 @@ export default function TrailerSection({ data }: Readonly<{ data: Trailer }>) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section id="trailer" className="py-20 bg-[#0e0b09] text-white">
+    <section id="trailer" className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 relative overflow-hidden">
+      {/* Декоративные элементы */}
+      <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
+      <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
+      
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-semibold">Трейлер</h2>
-          <p className="opacity-80 mt-2 max-w-2xl">{data.title}</p>
+          <div className="text-center mb-12">
+            <div className="inline-block px-4 py-2 bg-amber-600/10 border border-amber-600/30 rounded-full text-sm font-medium text-amber-800 mb-4">
+              Видео
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Трейлер</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">{data.title}</p>
+          </div>
           
           <motion.div 
             className="mt-8 aspect-video rounded-2xl overflow-hidden ring-1 ring-[#D4AF37]/30 relative group"
@@ -61,8 +70,8 @@ export default function TrailerSection({ data }: Readonly<{ data: Trailer }>) {
             transition={{ delay: 0.4 }}
           >
             <motion.button
-              className="inline-flex items-center gap-3 px-8 py-4 bg-[#D4AF37] text-black font-semibold rounded-2xl hover:bg-[#D4AF37]/90 transition-colors duration-300 shadow-[0_6px_20px_rgba(212,175,55,0.35)]"
-              whileHover={{ scale: 1.05, shadow: "0 8px 26px rgba(212,175,55,0.5)" }}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-amber-600 text-white font-semibold rounded-2xl hover:bg-amber-700 transition-colors duration-300 shadow-lg"
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsPlaying(true)}
             >

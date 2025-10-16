@@ -6,18 +6,30 @@ import { useState } from "react";
 export default function GallerySection({ items }: Readonly<{ items: GalleryItem[] }>) {
   const [open, setOpen] = useState<GalleryItem|null>(null);
   return (
-    <section id="gallery" className="py-20 bg-[#15110E] text-white">
+    <section id="gallery" className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 relative overflow-hidden">
+      {/* Декоративные элементы */}
+      <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
+      <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
+      
       <Container>
-        <h2 className="text-3xl font-semibold">Галерея</h2>
+        <div className="text-center mb-12">
+          <div className="inline-block px-4 py-2 bg-amber-600/10 border border-amber-600/30 rounded-full text-sm font-medium text-amber-800 mb-4">
+            Фотографии
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Галерея</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Сцены из спектакля, костюмы, декорации и моменты за кулисами
+          </p>
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
           {items.map(img => (
-            <button key={img.id} onClick={()=>setOpen(img)} onKeyDown={(e)=>e.key==='Enter'&&setOpen(img)} className="relative aspect-[4/3] rounded-2xl overflow-hidden ring-1 ring-[#D4AF37]/20 focus:outline-none group" tabIndex={0}>
+            <button key={img.id} onClick={()=>setOpen(img)} onKeyDown={(e)=>e.key==='Enter'&&setOpen(img)} className="relative aspect-[4/3] rounded-2xl overflow-hidden ring-1 ring-amber-200 focus:outline-none group shadow-lg hover:shadow-xl transition-all duration-300" tabIndex={0}>
               <img src={img.src} alt={img.alt||"Фото спектакля"} className="w-full h-full object-cover hover:scale-[1.03] transition duration-300" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="text-white text-sm font-medium">{img.alt}</div>
                 {img.tag && (
-                  <div className="inline-block mt-1 px-2 py-1 bg-[#D4AF37] text-black text-xs font-semibold rounded-full">
+                  <div className="inline-block mt-1 px-2 py-1 bg-amber-600 text-white text-xs font-semibold rounded-full">
                     {img.tag}
                   </div>
                 )}

@@ -26,10 +26,22 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
   };
 
   return (
-    <section id="journey" className="py-20 bg-[#15110E] text-white">
+    <section id="journey" className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 relative overflow-hidden">
+      {/* Декоративные элементы */}
+      <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
+      <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
+      
       <Container>
-        <div className="flex items-center justify-between">
-          <h2 className="text-3xl font-semibold">Путешествие по городам</h2>
+        <div className="text-center mb-16">
+          <div className="inline-block px-4 py-2 bg-amber-600/10 border border-amber-600/30 rounded-full text-sm font-medium text-amber-800 mb-4">
+            Маршрут
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Путешествие по городам</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Следуйте за Остапом Бендером по маршруту от Старгорода до Москвы. 
+            Каждый город — новая глава в истории поиска сокровища.
+          </p>
+        </div>
           
           {/* Навигационные кнопки */}
           <div className="flex gap-2">
@@ -86,18 +98,18 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
       <div className="mt-8 overflow-x-auto scrollbar-hide px-4 md:px-8" ref={containerRef}>
         <div className="flex gap-6 min-w-[700px] snap-x snap-mandatory journey-section">
           {items.map((c, index) => (
-            <motion.article
-              key={c.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ 
-                y: -8, 
-                scale: 1.02,
-                transition: { duration: 0.2 }
-              }}
-              className="snap-start w-[320px] shrink-0 rounded-2xl overflow-hidden relative border border-[#D4AF37]/20 bg-black journey-card group"
-            >
+                   <motion.article
+                     key={c.id}
+                     initial={{ opacity: 0, y: 20 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     transition={{ delay: index * 0.1, duration: 0.5 }}
+                     whileHover={{ 
+                       y: -8, 
+                       scale: 1.02,
+                       transition: { duration: 0.2 }
+                     }}
+                     className="snap-start w-[320px] shrink-0 rounded-2xl overflow-hidden relative border border-amber-200 bg-white shadow-xl journey-card group hover:shadow-2xl transition-all duration-300"
+                   >
               {/* Декоративные элементы */}
               <motion.div
                 className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
@@ -136,24 +148,24 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                 </motion.h3>
               </div>
               
-              <motion.div 
-                className="p-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 + index * 0.1 }}
-              >
-                <p className="opacity-90 mt-1 text-sm leading-relaxed">{c.summary}</p>
-                {c.quote && (
-                  <motion.blockquote 
-                    className="mt-3 text-sm italic opacity-80 border-l-2 border-[#D4AF37]/50 pl-3"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                  >
-                    "{c.quote}"
-                  </motion.blockquote>
-                )}
-              </motion.div>
+                     <motion.div
+                       className="p-6"
+                       initial={{ opacity: 0 }}
+                       animate={{ opacity: 1 }}
+                       transition={{ delay: 0.3 + index * 0.1 }}
+                     >
+                       <p className="text-gray-600 mt-1 text-sm leading-relaxed">{c.summary}</p>
+                       {c.quote && (
+                         <motion.blockquote
+                           className="mt-3 text-sm italic text-amber-700 border-l-2 border-amber-300 pl-3"
+                           initial={{ opacity: 0, x: -10 }}
+                           animate={{ opacity: 1, x: 0 }}
+                           transition={{ delay: 0.5 + index * 0.1 }}
+                         >
+                           "{c.quote}"
+                         </motion.blockquote>
+                       )}
+                     </motion.div>
 
               {/* Анимированная рамка */}
               <motion.div
