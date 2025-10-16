@@ -43,13 +43,15 @@ export default function TrailerSection({ data }: Readonly<{ data: Trailer }>) {
               </motion.div>
             )}
             
-            <iframe 
-              className="w-full h-full" 
-              src={isPlaying ? data.videoUrl : ""} 
-              title="Трейлер" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen 
-            />
+            {isPlaying && (
+              <iframe 
+                className="w-full h-full" 
+                src={data.videoUrl} 
+                title="Трейлер" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen 
+              />
+            )}
           </motion.div>
 
           <motion.div 
