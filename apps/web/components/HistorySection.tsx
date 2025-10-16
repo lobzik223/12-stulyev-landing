@@ -28,7 +28,7 @@ export default function HistorySection({ data }: Readonly<{ data: HistoryBlock }
                 {data.facts.map((f,i)=>(<li key={`f-${i}`}>{f}</li>))}
               </ul>
             )}
-            {data.quote && <blockquote className="mt-6 border-l-4 border-amber-400 pl-4 italic text-amber-700 text-lg">"{data.quote}"</blockquote>}
+                   {data.quote && <blockquote className="mt-6 border-l-4 border-amber-400 pl-4 italic text-amber-700 text-lg">&ldquo;{data.quote}&rdquo;</blockquote>}
           </div>
         </div>
       </Container>

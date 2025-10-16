@@ -25,7 +25,7 @@ export default function ActorsSection({ actors, crew }: Readonly<{ actors: Actor
               <div className="p-6">
                 <div className="text-lg font-semibold text-gray-900">{a.name}</div>
                 <div className="text-gray-600">{a.role}</div>
-                {a.quote && <blockquote className="mt-2 text-sm italic text-amber-700 border-l-2 border-amber-300 pl-3">"{a.quote}"</blockquote>}
+                       {a.quote && <blockquote className="mt-2 text-sm italic text-amber-700 border-l-2 border-amber-300 pl-3">&ldquo;{a.quote}&rdquo;</blockquote>}
               </div>
             </article>
           ))}

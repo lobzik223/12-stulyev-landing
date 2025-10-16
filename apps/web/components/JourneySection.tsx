@@ -139,14 +139,14 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
               >
                 <p className="text-gray-600 mt-1 text-sm leading-relaxed">{c.summary}</p>
                 {c.quote && (
-                  <motion.blockquote
-                    className="mt-3 text-sm italic text-amber-700 border-l-2 border-amber-300 pl-3"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                  >
-                    "{c.quote}"
-                  </motion.blockquote>
+                         <motion.blockquote
+                           className="mt-3 text-sm italic text-amber-700 border-l-2 border-amber-300 pl-3"
+                           initial={{ opacity: 0, x: -10 }}
+                           animate={{ opacity: 1, x: 0 }}
+                           transition={{ delay: 0.5 + index * 0.1 }}
+                         >
+                           &ldquo;{c.quote}&rdquo;
+                         </motion.blockquote>
                 )}
               </motion.div>
 
