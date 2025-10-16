@@ -7,20 +7,8 @@ export default function Hero() {
       
       <div className="mx-auto max-w-6xl relative z-10 pt-8 pb-16 pl-2 pr-8">
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Левая колонка - изображение */}
-          <div className="order-2 md:order-1">
-            <div className="relative">
-              <img 
-                src="/images/lady-Photoroom.png" 
-                alt="Портрет дамы в театральном костюме" 
-                className="w-full h-auto rounded-2xl shadow-xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-amber-100/20 to-transparent rounded-2xl"></div>
-            </div>
-          </div>
-          
-          {/* Правая колонка - контент */}
-          <div className="order-1 md:order-2">
+          {/* Левая колонка - контент */}
+          <div className="order-1 md:order-1">
             {/* Главный заголовок */}
             <div className="mb-12">
               <h1 className="text-6xl md:text-8xl font-bold leading-tight">
@@ -60,6 +48,18 @@ export default function Hero() {
                 </svg>
                 О спектакле
               </a>
+            </div>
+          </div>
+          
+          {/* Правая колонка - изображение */}
+          <div className="order-2 md:order-2">
+            <div className="relative">
+              <img 
+                src="/images/lady-Photoroom.png" 
+                alt="Портрет дамы в театральном костюме" 
+                className="w-full h-auto"
+                style={{ background: 'transparent' }}
+              />
             </div>
           </div>
         </div>
