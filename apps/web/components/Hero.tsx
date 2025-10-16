@@ -2,44 +2,45 @@ import Container from "./Container";
 
 export default function Hero() {
   return (
-    <section
-      className="relative min-h-screen flex items-center text-white overflow-hidden"
-      style={{
-        backgroundImage: "url(/images/hero-map.jpg)",
-        backgroundSize: "cover",
-        backgroundPosition: "center"
-      }}
-    >
-      {/* Градиентные оверлеи */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0e0b09]/80 via-[#0e0b09]/60 to-[#0e0b09]/90" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0e0b09] via-transparent to-transparent" />
-      
+    <section className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden">
       {/* Декоративные элементы */}
-      <div className="absolute top-20 right-20 w-32 h-32 border border-[#D4AF37]/20 rounded-full" />
-      <div className="absolute bottom-20 left-20 w-24 h-24 border border-[#D4AF37]/30 rounded-full" />
+      <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
+      <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
       
       <Container>
-        <div className="relative z-10 max-w-4xl">
-          <div className="mb-6">
-            <span className="inline-block px-4 py-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full text-sm font-medium text-[#D4AF37]">
-              Театральный спектакль
-            </span>
+        <div className="relative z-10 pt-20 pb-16">
+          {/* Логотип */}
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-2 text-sm font-medium text-amber-800">
+              <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
+              МЫ ПЛЮС ВЫ
+            </div>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-            <span className="block text-white">«12 стульев»</span>
-            <span className="block text-[#D4AF37] mt-2">театральное путешествие</span>
-          </h1>
+          {/* Главный заголовок */}
+          <div className="mb-12">
+            <h1 className="text-6xl md:text-8xl font-bold leading-tight">
+              <span className="block text-gray-900 font-serif">ТЕАТР</span>
+              <span className="block text-amber-700 font-script text-5xl md:text-6xl mt-2">живых</span>
+              <span className="block text-gray-900 font-serif text-6xl md:text-8xl">ИСТОРИЙ</span>
+            </h1>
+          </div>
           
-          <p className="mt-8 max-w-2xl text-xl leading-relaxed opacity-90">
-            От Старгорода до Москвы. Следуй за Бендером — города, сцены, охота за сокровищем. 
-            Классика русской литературы в современной постановке.
-          </p>
+          {/* Описание */}
+          <div className="max-w-3xl mb-16">
+            <p className="text-xl leading-relaxed text-gray-700 mb-6">
+              ЗДЕСЬ МЫ ОДНОВРЕМЕННО ЗРИТЕЛИ, УЧАСТНИКИ И РЕЖИССЁРЫ СОБСТВЕННОГО ВНУТРЕННЕГО СПЕКТАКЛЯ
+            </p>
+            <p className="text-lg text-gray-600">
+              Первый в России театр, где психологи-актеры разыгрывают истории зрителей в формате живой психодрамы
+            </p>
+          </div>
           
-          <div className="mt-12 flex flex-col sm:flex-row gap-4">
+          {/* Кнопки */}
+          <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="#events"
-              className="inline-flex items-center justify-center gap-3 rounded-2xl px-8 py-4 font-semibold bg-[#D4AF37] text-black shadow-[0_8px_32px_rgba(212,175,55,0.4)] hover:shadow-[0_12px_40px_rgba(212,175,55,0.6)] hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-colors duration-300 shadow-lg"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
@@ -48,7 +49,7 @@ export default function Hero() {
             </a>
             <a
               href="#about"
-              className="inline-flex items-center justify-center gap-3 rounded-2xl px-8 py-4 font-semibold border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-amber-600 text-amber-700 font-semibold rounded-lg hover:bg-amber-50 transition-colors duration-300"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -56,24 +57,16 @@ export default function Hero() {
               О спектакле
             </a>
           </div>
-          
-          {/* Статистика */}
-          <div className="mt-16 grid grid-cols-3 gap-8 max-w-md">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-[#D4AF37]">6</div>
-              <div className="text-sm opacity-80">городов</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-[#D4AF37]">12</div>
-              <div className="text-sm opacity-80">стульев</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-[#D4AF37]">1</div>
-              <div className="text-sm opacity-80">сокровище</div>
-            </div>
-          </div>
         </div>
       </Container>
+      
+      {/* Рваный край */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-amber-100 to-transparent" 
+           style={{
+             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 L80,70 160,50 220,80 300,40 360,85 430,55 500,90 570,45 640,80 720,52 800,88 880,50 960,78 1040,58 1120,82 1200,60 1200,120 0,120 Z' fill='%23f59e0b'/%3E%3C/svg%3E")`,
+             backgroundSize: 'cover',
+             backgroundPosition: 'top'
+           }} />
     </section>
   );
 }

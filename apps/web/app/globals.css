@@ -4,6 +4,9 @@
   --gold: #D4AF37;
   --paper: #D9C7A3;        /* беж под бумагу */
   --paper-text: #1e1a17;   /* тёмный текст на бежевом */
+  --amber: #f59e0b;
+  --amber-light: #fef3c7;
+  --amber-dark: #92400e;
 }
 
 .font-serif {
@@ -20,10 +23,16 @@ h1, h2, h3 {
 }
 
 body {
-  background: #0e0b09;
-  color: white;
+  background: #fef3c7;
+  color: #1f2937;
   font-family: var(--font-sans), system-ui, sans-serif;
   scroll-behavior: smooth;
+}
+
+/* Стили для рукописного шрифта */
+.font-script {
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  font-weight: 400;
 }
 
 /* Улучшенные стили для красоты */
@@ -107,10 +116,11 @@ html {
 .zigzag::before {
   content: "";
   position: absolute;
-  top: -8px;
+  top: -12px;
   left: 0;
   right: 0;
-  height: 16px;
-  background: var(--paper);
-  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+  height: 24px;
+  background: #fef3c7;
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+  z-index: 1;
 }
