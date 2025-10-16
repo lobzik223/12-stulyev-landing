@@ -2,10 +2,47 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden">
       {/* Декоративные элементы - Звезды */}
+      {/* Существующие звезды */}
       <svg className="absolute top-20 right-20 w-10 h-10 text-amber-400 opacity-30 z-20" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
       </svg>
       <svg className="absolute bottom-20 left-20 w-8 h-8 text-amber-400 opacity-40 z-20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Дополнительные звезды */}
+      {/* Верхний левый угол */}
+      <svg className="absolute top-16 left-16 w-6 h-6 text-amber-400 opacity-25 z-20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Над текстом "театральное" */}
+      <svg className="absolute top-32 left-32 w-5 h-5 text-amber-400 opacity-35 z-20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Справа от головы дамы */}
+      <svg className="absolute top-24 right-32 w-7 h-7 text-amber-400 opacity-30 z-20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Справа от груди дамы */}
+      <svg className="absolute top-40 right-24 w-6 h-6 text-amber-400 opacity-35 z-20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Под кнопкой "О спектакле" */}
+      <svg className="absolute bottom-32 left-32 w-5 h-5 text-amber-400 opacity-40 z-20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Снизу слева от дамы */}
+      <svg className="absolute bottom-40 left-40 w-7 h-7 text-amber-400 opacity-30 z-20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Нижний правый угол */}
+      <svg className="absolute bottom-24 right-16 w-6 h-6 text-amber-400 opacity-35 z-20" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
       </svg>
       
