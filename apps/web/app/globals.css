@@ -109,18 +109,41 @@ html {
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* зигзаг-разделитель между постером и бумажным блоком */
-.zigzag {
-  position: relative;
-}
-.zigzag::before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: 0;
-  right: 0;
-  height: 24px;
-  background: #fef3c7;
-  clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
-  z-index: 1;
-}
+       /* Красивые анимации для рваных краёв */
+       @keyframes tornEdgeFloat {
+         0%, 100% { transform: translateY(0px) rotate(0deg); }
+         25% { transform: translateY(-2px) rotate(0.5deg); }
+         50% { transform: translateY(-1px) rotate(-0.3deg); }
+         75% { transform: translateY(-3px) rotate(0.2deg); }
+       }
+
+       @keyframes particleFloat {
+         0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+         25% { transform: translateY(-4px) translateX(2px); opacity: 0.6; }
+         50% { transform: translateY(-2px) translateX(-1px); opacity: 0.4; }
+         75% { transform: translateY(-6px) translateX(1px); opacity: 0.8; }
+       }
+
+       .torn-edge-animated {
+         animation: tornEdgeFloat 8s ease-in-out infinite;
+       }
+
+       .particle-animated {
+         animation: particleFloat 6s ease-in-out infinite;
+       }
+
+       /* зигзаг-разделитель между постером и бумажным блоком */
+       .zigzag {
+         position: relative;
+       }
+       .zigzag::before {
+         content: "";
+         position: absolute;
+         top: -12px;
+         left: 0;
+         right: 0;
+         height: 24px;
+         background: #fef3c7;
+         clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+         z-index: 1;
+       }
