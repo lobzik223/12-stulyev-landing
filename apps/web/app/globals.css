@@ -236,39 +236,39 @@ html {
        }
 
        .animate-star-float-1 {
-         animation: starFloat1 8s ease-in-out infinite;
+         animation: starFloat1 6s ease-in-out infinite;
        }
 
        .animate-star-float-2 {
-         animation: starFloat2 10s ease-in-out infinite;
+         animation: starFloat2 7s ease-in-out infinite;
        }
 
        .animate-star-float-3 {
-         animation: starFloat3 12s ease-in-out infinite;
+         animation: starFloat3 8s ease-in-out infinite;
        }
 
        .animate-star-float-4 {
-         animation: starFloat4 9s ease-in-out infinite;
+         animation: starFloat4 6.5s ease-in-out infinite;
        }
 
        .animate-star-float-5 {
-         animation: starFloat5 11s ease-in-out infinite;
+         animation: starFloat5 8.5s ease-in-out infinite;
        }
 
        .animate-star-float-6 {
-         animation: starFloat6 7s ease-in-out infinite;
+         animation: starFloat6 5s ease-in-out infinite;
        }
 
        .animate-star-float-7 {
-         animation: starFloat7 13s ease-in-out infinite;
+         animation: starFloat7 9s ease-in-out infinite;
        }
 
        .animate-star-float-8 {
-         animation: starFloat8 9s ease-in-out infinite;
+         animation: starFloat8 6s ease-in-out infinite;
        }
 
        .animate-star-float-9 {
-         animation: starFloat9 15s ease-in-out infinite;
+         animation: starFloat9 10s ease-in-out infinite;
        }
 
        /* зигзаг-разделитель между постером и бумажным блоком */
