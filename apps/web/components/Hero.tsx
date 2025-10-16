@@ -19,24 +19,24 @@ export default function Hero() {
                    <div className="mt-4 w-16 h-0.5 bg-amber-600"></div>
                  </div>
           
-          {/* Главный заголовок */}
-          <div className="mb-12">
-            <h1 className="text-6xl md:text-8xl font-bold leading-tight">
-              <span className="block text-gray-900 font-serif">ТЕАТР</span>
-              <span className="block text-amber-700 font-script text-5xl md:text-6xl mt-2">живых</span>
-              <span className="block text-gray-900 font-serif text-6xl md:text-8xl">ИСТОРИЙ</span>
-            </h1>
-          </div>
+                 {/* Главный заголовок */}
+                 <div className="mb-12">
+                   <h1 className="text-6xl md:text-8xl font-bold leading-tight">
+                     <span className="block text-gray-900 font-serif">«12 СТУЛЬЕВ»</span>
+                     <span className="block text-amber-700 font-script text-5xl md:text-6xl mt-2">театральное</span>
+                     <span className="block text-gray-900 font-serif text-6xl md:text-8xl">ПУТЕШЕСТВИЕ</span>
+                   </h1>
+                 </div>
           
-          {/* Описание */}
-          <div className="max-w-3xl mb-16">
-            <p className="text-xl leading-relaxed text-gray-700 mb-6">
-              ЗДЕСЬ МЫ ОДНОВРЕМЕННО ЗРИТЕЛИ, УЧАСТНИКИ И РЕЖИССЁРЫ СОБСТВЕННОГО ВНУТРЕННЕГО СПЕКТАКЛЯ
-            </p>
-            <p className="text-lg text-gray-600">
-              Первый в России театр, где психологи-актеры разыгрывают истории зрителей в формате живой психодрамы
-            </p>
-          </div>
+                 {/* Описание */}
+                 <div className="max-w-3xl mb-16">
+                   <p className="text-xl leading-relaxed text-gray-700 mb-6">
+                     КЛАССИЧЕСКАЯ КОМЕДИЯ ИЛЬФА И ПЕТРОВА В СОВРЕМЕННОЙ ТЕАТРАЛЬНОЙ ИНТЕРПРЕТАЦИИ
+                   </p>
+                   <p className="text-lg text-gray-600">
+                     Следуйте за Остапом Бендером в поисках сокровища, спрятанного в одном из двенадцати стульев
+                   </p>
+                 </div>
           
           {/* Кнопки */}
           <div className="flex flex-col sm:flex-row gap-4">
