@@ -78,21 +78,6 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
             </motion.button>
           </div>
         </div>
-
-        {/* Индикатор прогресса */}
-        <div className="mt-4 flex gap-2">
-          {items.map((item, index) => (
-            <motion.div
-              key={`progress-${item.id}`}
-              className={`h-1 rounded-full transition-all ${
-                index === currentIndex ? 'bg-[#D4AF37]' : 'bg-[#D4AF37]/30'
-              }`}
-              style={{ width: index === currentIndex ? '24px' : '8px' }}
-              animate={{ width: index === currentIndex ? '24px' : '8px' }}
-              transition={{ duration: 0.3 }}
-            />
-          ))}
-        </div>
       </Container>
 
       <div className="mt-8 overflow-x-auto scrollbar-hide px-4 md:px-8" ref={containerRef}>
