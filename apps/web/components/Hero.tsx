@@ -58,26 +58,13 @@ export default function Hero() {
         </div>
       </div>
       
-      {/* Рваный край с анимацией */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-900 to-transparent overflow-hidden torn-edge-animated" 
+      {/* Рваный край */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-900 to-transparent overflow-hidden" 
            style={{
              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 Q30,45 60,65 Q90,85 120,70 Q150,50 180,75 Q210,90 240,60 Q270,30 300,55 Q330,80 360,65 Q390,40 420,70 Q450,95 480,65 Q510,35 540,70 Q570,90 600,60 Q630,30 660,55 Q690,80 720,65 Q750,40 780,70 Q810,95 840,65 Q870,35 900,70 Q930,90 960,60 Q990,30 1020,55 Q1050,80 1080,65 Q1110,40 1140,70 Q1170,95 1200,60 L1200,120 0,120 Z' fill='%23111827'/%3E%3C/svg%3E")`,
              backgroundSize: 'cover',
              backgroundPosition: 'top'
            }}>
-        {/* Плавные анимированные частицы */}
-        <div className="absolute inset-0">
-          <div className="absolute top-4 left-1/4 w-1.5 h-1.5 bg-amber-400/40 rounded-full particle-animated"></div>
-          <div className="absolute top-6 right-1/3 w-1 h-1 bg-amber-300/50 rounded-full particle-float" style={{animationDelay: '1s'}}></div>
-          <div className="absolute top-8 left-1/2 w-1.5 h-1.5 bg-amber-500/30 rounded-full particle-animated" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-2 right-1/4 w-1 h-1 bg-amber-400/60 rounded-full particle-float" style={{animationDelay: '3s'}}></div>
-          
-          {/* Дополнительные мягкие частицы */}
-          <div className="absolute top-3 left-1/6 w-1 h-1 bg-amber-600/50 rounded-full particle-float" style={{animationDelay: '0.5s'}}></div>
-          <div className="absolute top-7 right-1/6 w-1 h-1 bg-amber-300/70 rounded-full particle-animated" style={{animationDelay: '1.5s'}}></div>
-          <div className="absolute top-5 left-2/3 w-1.5 h-1.5 bg-amber-500/35 rounded-full particle-float" style={{animationDelay: '2.5s'}}></div>
-          <div className="absolute top-1 right-1/2 w-1 h-1 bg-amber-400/45 rounded-full particle-animated" style={{animationDelay: '3.5s'}}></div>
-        </div>
       </div>
     </section>
   );
