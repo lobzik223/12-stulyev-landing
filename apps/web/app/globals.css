@@ -2,6 +2,8 @@
 
 :root {
   --gold: #D4AF37;
+  --paper: #D9C7A3;        /* беж под бумагу */
+  --paper-text: #1e1a17;   /* тёмный текст на бежевом */
 }
 
 .font-serif {
@@ -39,4 +41,30 @@ body {
 }
 .journey-card {
   scroll-snap-align: start;
+}
+
+/* скрыть системный скролл у горизонтальных лент */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* зигзаг-разделитель между постером и бумажным блоком */
+.zigzag {
+  position: relative;
+}
+.zigzag::before {
+  content: "";
+  position: absolute;
+  inset: -1px 0 auto 0; /* по верху бумажного блока */
+  height: 14px;
+  background:
+    radial-gradient(10px 7px at 10px 9px, transparent 70%, var(--paper) 72%) repeat-x;
+  background-size: 20px 14px;
+  background-position: -10px 0;
+  /* создаём «зубчики» */
+  -webkit-mask:
+    linear-gradient(#000 0 0) top/100% 7px no-repeat,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) top/100% 7px no-repeat,
+    linear-gradient(#000 0 0);
 }

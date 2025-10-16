@@ -8,5 +8,6 @@ export type EventItem = {
   status?: "scheduled" | "sold_out" | "cancelled";
   slug: string;
   poster?: string;
+  price?: number; // Added price field
 };
 
