@@ -1,4 +1,3 @@
-import Container from "./Container";
 
 export default function Hero() {
   return (
@@ -7,8 +6,7 @@ export default function Hero() {
       <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
       <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
       
-      <Container>
-        <div className="relative z-10 pt-20 pb-16">
+      <div className="mx-auto max-w-6xl relative z-10 pt-20 pb-16 px-2">
                  {/* Логотип */}
                  <div className="mb-8">
                    <div className="inline-flex items-center gap-2 text-sm font-medium text-amber-800">
@@ -60,7 +58,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-      </Container>
+      </div>
       
              {/* Рваный край */}
              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-900 to-transparent" 
