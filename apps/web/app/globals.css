@@ -22,3 +22,21 @@ body {
   color: white;
   font-family: var(--font-sans), system-ui, sans-serif;
 }
+
+/* Скрываем полосу прокрутки во всех браузерах */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Плавный скролл с анимацией */
+.journey-section {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+.journey-card {
+  scroll-snap-align: start;
+}
