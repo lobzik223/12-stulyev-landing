@@ -26,22 +26,16 @@ export default async function Page() {
     <>
       <Hero />
       <Events items={events} />
-      <SectionDivider variant="dark" height={80} />
 
       <JourneySection items={journey} />
-      <SectionDivider variant="dark" flip height={80} />
 
       <TrailerSection data={trailer} />
-      <SectionDivider variant="dark" height={80} />
 
       <GallerySection items={gallery} />
-      <SectionDivider variant="dark" flip height={80} />
 
       <ActorsSection actors={actors} crew={crew} />
-      <SectionDivider variant="dark" height={80} />
 
       <HistorySection data={history} />
-      <SectionDivider variant="dark" flip height={80} />
 
       <ContactsSection data={contacts} />
     </>

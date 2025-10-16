@@ -1,12 +1,13 @@
 "use client";
 import Container from "./Container";
 import { EventItem } from "@/types/events";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import TicketCard from "./TicketCard";
 import ArrowButton from "./ArrowButton";
 
 export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
   const scroller = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const scrollBy = (dir: "left" | "right") => {
     const root = scroller.current;
@@ -16,11 +17,120 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
     root.scrollBy({ left: dir === "left" ? -step : step, behavior: "smooth" });
   };
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  };
+
   return (
-    <section id="events" className="relative py-20 bg-gray-900 text-white overflow-hidden">
-      {/* Декоративные элементы */}
-      <div className="absolute top-10 left-10 w-20 h-20 border border-amber-400/20 rounded-full" />
-      <div className="absolute bottom-10 right-10 w-16 h-16 border border-amber-400/30 rounded-full" />
+    <section id="events" className="relative py-20 bg-gray-900 text-white overflow-hidden" onMouseMove={handleMouseMove}>
+      {/* Декоративные элементы - Звезды с эффектом отталкивания */}
+      {/* Верхний правый угол */}
+      <svg 
+        className="absolute top-12 right-12 w-8 h-8 text-amber-400 opacity-30 z-20 animate-star-float-1 transition-transform duration-300" 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+        style={{
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 80) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 80) * 0.02))}px)`
+        }}
+      >
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Нижний левый угол */}
+      <svg 
+        className="absolute bottom-12 left-12 w-6 h-6 text-amber-400 opacity-40 z-20 animate-star-float-2 transition-transform duration-300" 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+        style={{
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 80) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 80) * -0.02))}px)`
+        }}
+      >
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Центр слева */}
+      <svg 
+        className="absolute top-1/2 left-8 w-5 h-5 text-amber-400 opacity-25 z-20 animate-star-float-3 transition-transform duration-300" 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+        style={{
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 60) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
+        }}
+      >
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Центр справа */}
+      <svg 
+        className="absolute top-1/2 right-8 w-7 h-7 text-amber-400 opacity-35 z-20 animate-star-float-4 transition-transform duration-300" 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+        style={{
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 60) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
+        }}
+      >
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Верхний центр */}
+      <svg 
+        className="absolute top-8 left-1/2 w-6 h-6 text-amber-400 opacity-30 z-20 animate-star-float-5 transition-transform duration-300" 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+        style={{
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 60) * 0.02))}px)`
+        }}
+      >
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Нижний центр */}
+      <svg 
+        className="absolute bottom-8 left-1/2 w-5 h-5 text-amber-400 opacity-35 z-20 animate-star-float-6 transition-transform duration-300" 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+        style={{
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 60) * -0.02))}px)`
+        }}
+      >
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Левый верхний угол */}
+      <svg 
+        className="absolute top-16 left-16 w-4 h-4 text-amber-400 opacity-40 z-20 animate-star-float-7 transition-transform duration-300" 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+        style={{
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 120) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 120) * -0.02))}px)`
+        }}
+      >
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Правый нижний угол */}
+      <svg 
+        className="absolute bottom-16 right-16 w-6 h-6 text-amber-400 opacity-30 z-20 animate-star-float-8 transition-transform duration-300" 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+        style={{
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 120) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 120) * 0.02))}px)`
+        }}
+      >
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
+      
+      {/* Центр экрана */}
+      <svg 
+        className="absolute top-1/2 left-1/2 w-3 h-3 text-amber-400 opacity-20 z-20 animate-star-float-9 transition-transform duration-300" 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+        style={{
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.01))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.01))}px)`
+        }}
+      >
+        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+      </svg>
       
       <Container>
         <div className="flex items-center justify-between gap-4 mb-12">
