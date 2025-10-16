@@ -11,19 +11,19 @@ export default function Hero() {
           <div className="order-1 md:order-1">
             {/* Главный заголовок */}
             <div className="mb-12">
-              <h1 className="text-6xl md:text-8xl font-bold leading-tight">
-                <span className="block text-gray-900 font-serif">«<span className="text-8xl md:text-9xl">12</span> СТУЛЬЕВ»</span>
-                <span className="block text-amber-700 font-script text-5xl md:text-6xl mt-2">театральное</span>
-                <span className="block text-gray-900 font-serif text-6xl md:text-8xl">ПУТЕШЕСТВИЕ</span>
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                <span className="block text-gray-900 font-serif">«<span className="text-6xl md:text-7xl">12</span> СТУЛЬЕВ»</span>
+                <span className="block text-amber-700 font-script text-3xl md:text-4xl mt-2">театральное</span>
+                <span className="block text-gray-900 font-serif text-4xl md:text-6xl">ПУТЕШЕСТВИЕ</span>
               </h1>
             </div>
             
             {/* Описание */}
             <div className="max-w-3xl mb-16">
-              <p className="text-xl leading-relaxed text-gray-700 mb-6">
+              <p className="text-lg leading-relaxed text-gray-700 mb-6">
                 КЛАССИЧЕСКАЯ КОМЕДИЯ ИЛЬФА И ПЕТРОВА В СОВРЕМЕННОЙ ТЕАТРАЛЬНОЙ ИНТЕРПРЕТАЦИИ
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-base text-gray-600">
                 Следуйте за Остапом Бендером в поисках сокровища, спрятанного в одном из двенадцати стульев
               </p>
             </div>
