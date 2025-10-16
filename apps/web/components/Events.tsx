@@ -24,13 +24,15 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
       
       <Container>
         <div className="flex items-center justify-between gap-4 mb-12">
-          <div>
-            <div className="inline-block px-3 py-1 bg-amber-400/10 border border-amber-400/30 rounded-full text-sm font-medium text-amber-400 mb-3">
-              Расписание
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold font-serif">Ближайшие даты</h2>
-            <p className="mt-3 text-lg text-gray-300">Выберите город и купите билеты</p>
-          </div>
+                 <div>
+                   <div className="inline-block px-3 py-1 bg-amber-400/10 border border-amber-400/30 rounded-full text-sm font-medium text-amber-400 mb-3">
+                     Расписание
+                   </div>
+                   {/* Декоративная линия */}
+                   <div className="mb-4 w-16 h-0.5 bg-amber-400"></div>
+                   <h2 className="text-4xl md:text-5xl font-bold font-serif">Ближайшие даты</h2>
+                   <p className="mt-3 text-lg text-gray-300">Выберите город и купите билеты</p>
+                 </div>
           <div className="hidden md:flex items-center gap-3">
             <ArrowButton dir="left" onClick={() => scrollBy("left")} />
             <ArrowButton dir="right" onClick={() => scrollBy("right")} />

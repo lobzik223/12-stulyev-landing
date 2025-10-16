@@ -9,13 +9,15 @@ export default function Hero() {
       
       <Container>
         <div className="relative z-10 pt-20 pb-16">
-          {/* Логотип */}
-          <div className="mb-8">
-            <div className="inline-flex items-center gap-2 text-sm font-medium text-amber-800">
-              <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
-              МЫ ПЛЮС ВЫ
-            </div>
-          </div>
+                 {/* Логотип */}
+                 <div className="mb-8">
+                   <div className="inline-flex items-center gap-2 text-sm font-medium text-amber-800">
+                     <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
+                     МЫ ПЛЮС ВЫ
+                   </div>
+                   {/* Декоративная линия */}
+                   <div className="mt-4 w-16 h-0.5 bg-amber-600"></div>
+                 </div>
           
           {/* Главный заголовок */}
           <div className="mb-12">
@@ -61,7 +63,7 @@ export default function Hero() {
       </Container>
       
              {/* Рваный край */}
-             <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-900 to-transparent" 
+             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent" 
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 L80,70 160,50 220,80 300,40 360,85 430,55 500,90 570,45 640,80 720,52 800,88 880,50 960,78 1040,58 1120,82 1200,60 1200,120 0,120 Z' fill='%23111827'/%3E%3C/svg%3E")`,
                     backgroundSize: 'cover',
