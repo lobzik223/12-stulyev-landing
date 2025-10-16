@@ -6,11 +6,11 @@ export default function Hero() {
       <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
       
       <div className="mx-auto max-w-6xl relative z-10 pt-4 pb-24 pl-4 pr-8">
-        <div className="grid md:grid-cols-2 gap-8 items-center mt-16">
+        <div className="grid md:grid-cols-2 gap-8 items-center mt-8">
           {/* Левая колонка - контент */}
           <div className="order-1 md:order-1">
             {/* Главный заголовок */}
-            <div className="mb-16">
+            <div className="mb-8">
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                 <span className="block text-gray-900 font-serif">«<span className="text-7xl md:text-8xl">12</span> СТУЛЬЕВ»</span>
                 <span className="block text-amber-700 font-script text-4xl md:text-5xl mt-2">театральное</span>
@@ -19,7 +19,7 @@ export default function Hero() {
             </div>
             
             {/* Описание */}
-            <div className="max-w-3xl mb-20">
+            <div className="max-w-3xl mb-12">
               <p className="text-xl leading-relaxed text-gray-700 mb-6 font-medium">
                 КЛАССИЧЕСКАЯ КОМЕДИЯ ИЛЬФА И ПЕТРОВА В СОВРЕМЕННОЙ ТЕАТРАЛЬНОЙ ИНТЕРПРЕТАЦИИ
               </p>
