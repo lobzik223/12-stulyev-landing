@@ -5,7 +5,7 @@ export default function Hero() {
       <div className="absolute top-20 right-20 w-32 h-32 border-2 border-amber-200 rounded-full opacity-30" />
       <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full opacity-40" />
       
-      <div className="mx-auto max-w-6xl relative z-10 pt-4 pb-1 pl-4 pr-8">
+      <div className="mx-auto max-w-6xl relative z-10 pt-4 pl-4 pr-8">
         <div className="grid md:grid-cols-2 gap-8 items-center mt-4">
           {/* Левая колонка - контент */}
           <div className="order-1 md:order-1">
