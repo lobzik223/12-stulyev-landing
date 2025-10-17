@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden">
       {/* Декоративные элементы - Звезды */}
       {/* Существующие звезды */}
       <svg className="absolute top-20 right-20 w-10 h-10 text-amber-400 opacity-30 z-20 animate-star-float-1" fill="currentColor" viewBox="0 0 24 24">
@@ -46,12 +46,12 @@ export default function Hero() {
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
       </svg>
       
-      <div className="mx-auto max-w-6xl relative z-10 pt-4 pl-4 pr-8">
-        <div className="grid md:grid-cols-2 gap-8 items-center mt-4">
+      <div className="mx-auto max-w-6xl relative z-10 pl-4 pr-8">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Левая колонка - контент */}
           <div className="order-1 md:order-1">
             {/* Главный заголовок */}
-            <div className="mb-6">
+            <div className="mb-6 -mt-8">
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                 <span className="block text-gray-900 font-serif">«<span className="text-7xl md:text-8xl">12</span> СТУЛЬЕВ»</span>
                 <span className="block text-amber-700 font-script text-4xl md:text-5xl mt-2">театральное</span>
@@ -94,11 +94,11 @@ export default function Hero() {
           
           {/* Правая колонка - изображение */}
           <div className="order-2 md:order-2 flex items-start justify-end">
-            <div className="relative mt-48">
+            <div className="relative mt-8 -mb-2">
                       <img 
                         src="/images/stulya12log.png" 
                         alt="Логотип спектакля 12 стульев" 
-                        className="w-full h-auto max-w-none scale-125"
+                        className="w-full h-auto max-w-none scale-110"
                         style={{ background: 'transparent' }}
                       />
             </div>

@@ -4,14 +4,33 @@ import { EventItem } from "@/types/events";
 import { useRef, useState, useEffect } from "react";
 import TicketCard from "./TicketCard";
 import ArrowButton from "./ArrowButton";
+import { motion } from "framer-motion";
 
 export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
   const scroller = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isClient, setIsClient] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (scroller.current) {
+      observer.observe(scroller.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   const scrollBy = (dir: "left" | "right") => {
@@ -163,10 +182,24 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
           ref={scroller}
           className="mt-8 flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 sm:px-1"
         >
-          {items.map((ev) => (
-            <div key={ev.id} className="snap-start shrink-0">
+          {items.map((ev, index) => (
+            <motion.div 
+              key={ev.id} 
+              className="snap-start shrink-0"
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={isVisible ? { 
+                opacity: 1, 
+                y: 0, 
+                scale: 1,
+                transition: {
+                  duration: 0.6,
+                  delay: index * 0.2,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }
+              } : { opacity: 0, y: 50, scale: 0.9 }}
+            >
               <TicketCard ev={ev} />
-            </div>
+            </motion.div>
           ))}
         </div>
 
