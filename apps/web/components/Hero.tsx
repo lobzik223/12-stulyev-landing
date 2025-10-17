@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
@@ -82,45 +83,101 @@ export default function Hero() {
           {/* Левая колонка - контент */}
           <div className="order-1 md:order-1">
             {/* Главный заголовок */}
-            <div className="mb-6 -mt-8">
+            <motion.div 
+              className="mb-6 -mt-8"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                <span className="block text-gray-900 font-serif">«<span className="text-7xl md:text-8xl">12</span> СТУЛЬЕВ»</span>
-                <span className="block text-amber-700 font-script text-4xl md:text-5xl mt-2">театральное</span>
-                <span className="block text-gray-900 font-serif text-5xl md:text-7xl">ПУТЕШЕСТВИЕ</span>
+                <motion.span 
+                  className="block text-gray-900 font-serif"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  «<span className="text-7xl md:text-8xl">12</span> СТУЛЬЕВ»
+                </motion.span>
+                <motion.span 
+                  className="block text-amber-700 font-script text-4xl md:text-5xl mt-2"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  театральное
+                </motion.span>
+                <motion.span 
+                  className="block text-gray-900 font-serif text-5xl md:text-7xl"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  ПУТЕШЕСТВИЕ
+                </motion.span>
               </h1>
-            </div>
+            </motion.div>
             
             {/* Описание */}
-            <div className="max-w-3xl mb-8">
-              <p className="text-xl leading-relaxed text-gray-700 mb-6 font-medium">
-                КЛАССИЧЕСКАЯ КОМЕДИЯ ИЛЬФА И ПЕТРОВА В СОВРЕМЕННОЙ ТЕАТРАЛЬНОЙ ИНТЕРПРЕТАЦИИ
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+            <motion.div 
+              className="max-w-3xl mb-8"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <motion.p 
+                className="text-lg md:text-xl leading-relaxed text-amber-700 mb-6 font-script"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+              >
+                Классическая комедия Ильфа и Петрова в современной театральной интерпретации
+              </motion.p>
+              <motion.p 
+                className="text-base md:text-lg text-gray-900 leading-relaxed font-script"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.7 }}
+              >
                 Следуйте за Остапом Бендером в поисках сокровища, спрятанного в одном из двенадцати стульев
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
             
             {/* Кнопки */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+            >
+              <motion.a
                 href="#events"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.9 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
                 Посмотреть расписание
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="#about"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-amber-600 text-amber-700 font-semibold rounded-lg hover:bg-amber-50 hover:border-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 1.0 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 О спектакле
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
           </div>
           
           {/* Правая колонка - изображение */}

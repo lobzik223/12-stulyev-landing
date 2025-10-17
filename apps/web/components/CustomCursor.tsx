@@ -137,125 +137,71 @@ export default function CustomCursor() {
         }}
       >
         {isHovering ? (
-          /* Блестящий бриллиант при наведении */
+          /* Блестящая звездочка при наведении */
           <div className="relative">
             <svg
-              width="40"
-              height="40"
-              viewBox="0 0 32 32"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
               fill="none"
               className="drop-shadow-2xl"
             >
-              {/* Верхняя часть бриллианта */}
-              <polygon
-                points="16,4 20,12 16,16 12,12"
-                fill="#E6F3FF"
-                stroke="#B0E0E6"
+              <path
+                d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"
+                fill="#F59E0B"
+                stroke="#D97706"
                 strokeWidth="1"
               />
               
-              {/* Левая грань */}
-              <polygon
-                points="16,4 12,12 8,20 16,16"
-                fill="#D4F1F4"
-                stroke="#87CEEB"
-                strokeWidth="1"
-              />
-              
-              {/* Правая грань */}
-              <polygon
-                points="16,4 20,12 24,20 16,16"
-                fill="#B8E6E6"
-                stroke="#5F9EA0"
-                strokeWidth="1"
-              />
-              
-              {/* Нижняя часть */}
-              <polygon
-                points="16,16 8,20 24,20"
-                fill="#87CEEB"
-                stroke="#4682B4"
-                strokeWidth="1"
-              />
-              
-              {/* Центральная грань */}
-              <polygon
-                points="16,16 12,12 8,20 16,16"
-                fill="#A8E6E6"
-                stroke="#5F9EA0"
-                strokeWidth="1"
-              />
-              
-              {/* Блеск на верхней грани */}
-              <polygon
-                points="16,6 18,10 16,12 14,10"
-                fill="#FFFFFF"
-                opacity="0.8"
+              {/* Блеск в центре */}
+              <circle
+                cx="12"
+                cy="9"
+                r="2"
+                fill="#FBBF24"
+                opacity="0.9"
               />
               
               {/* Дополнительные блики */}
               <circle
-                cx="14"
-                cy="8"
-                r="1"
-                fill="#FFFFFF"
-                opacity="0.9"
+                cx="10"
+                cy="7"
+                r="0.8"
+                fill="#FCD34D"
+                opacity="0.8"
               />
               <circle
-                cx="18"
-                cy="10"
-                r="0.8"
-                fill="#FFFFFF"
+                cx="14"
+                cy="8"
+                r="0.6"
+                fill="#FCD34D"
                 opacity="0.7"
               />
             </svg>
           </div>
         ) : (
-          /* Обычный бриллиант */
+          /* Обычная звездочка */
           <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
             fill="none"
             className="drop-shadow-lg"
           >
-            {/* Верхняя часть бриллианта */}
-            <polygon
-              points="16,4 20,12 16,16 12,12"
-              fill="#E0F6FF"
-              stroke="#B0E0E6"
-              strokeWidth="1"
-            />
-            
-            {/* Левая грань */}
-            <polygon
-              points="16,4 12,12 8,20 16,16"
-              fill="#D1F2F2"
-              stroke="#87CEEB"
-              strokeWidth="1"
-            />
-            
-            {/* Правая грань */}
-            <polygon
-              points="16,4 20,12 24,20 16,16"
-              fill="#B0E6E6"
-              stroke="#5F9EA0"
-              strokeWidth="1"
-            />
-            
-            {/* Нижняя часть */}
-            <polygon
-              points="16,16 8,20 24,20"
-              fill="#87CEEB"
-              stroke="#4682B4"
+            <path
+              d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"
+              fill="#FCD34D"
+              stroke="#F59E0B"
               strokeWidth="1"
             />
             
             {/* Тонкий блик */}
-            <polygon
-              points="16,6 17,9 16,10 15,9"
-              fill="#F0F8FF"
-              opacity="0.6"
+            <circle
+              cx="12"
+              cy="9"
+              r="1.2"
+              fill="#FEF3C7"
+              opacity="0.7"
             />
           </svg>
         )}
