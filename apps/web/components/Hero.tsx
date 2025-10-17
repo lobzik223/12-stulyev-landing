@@ -1,35 +1,4 @@
-"use client";
-import { useEffect, useState } from "react";
-
 export default function Hero() {
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolling(true);
-      
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-      
-      const newTimeout = setTimeout(() => {
-        setIsScrolling(false);
-      }, 150);
-      
-      setScrollTimeout(newTimeout);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-    };
-  }, [scrollTimeout]);
-
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden">
       {/* Декоративные элементы - Звезды */}
@@ -137,11 +106,10 @@ export default function Hero() {
         </div>
       </div>
       
-      {/* Анимированная волнистая волна */}
+      {/* Статичная волнистая волна */}
       <div className="absolute bottom-0 left-0 right-0 h-24 overflow-hidden z-30">
         <svg className="w-full h-full" viewBox="0 0 1200 96" preserveAspectRatio="none">
           <path 
-            className={`transition-all duration-300 ${isScrolling ? 'animate-wave-breathing' : ''}`}
             d="M0,48 Q150,24 300,48 T600,48 T900,48 T1200,48 L1200,96 L0,96 Z" 
             fill="#111827"
           />

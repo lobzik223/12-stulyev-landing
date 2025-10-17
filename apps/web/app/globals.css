@@ -284,25 +284,5 @@ html {
          z-index: 1;
        }
 
-       /* Красивая анимация волны - плавное дыхание */
-       @keyframes waveBreathing {
-         0% { 
-           transform: scaleY(1); 
-           opacity: 1;
-         }
-         50% { 
-           transform: scaleY(1.15); 
-           opacity: 0.85;
-         }
-         100% { 
-           transform: scaleY(1); 
-           opacity: 1;
-         }
-       }
-
-       .animate-wave-breathing {
-         animation: waveBreathing 2.5s ease-in-out infinite;
-         transform-origin: bottom center;
-       }
 
 
