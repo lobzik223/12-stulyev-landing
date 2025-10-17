@@ -141,7 +141,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-24 overflow-hidden z-30">
         <svg className="w-full h-full" viewBox="0 0 1200 96" preserveAspectRatio="none">
           <path 
-            className={`transition-all duration-300 ${isScrolling ? 'animate-wave-flow' : ''}`}
+            className={`transition-all duration-300 ${isScrolling ? 'animate-wave-breathing' : ''}`}
             d="M0,48 Q150,24 300,48 T600,48 T900,48 T1200,48 L1200,96 L0,96 Z" 
             fill="#111827"
           />
