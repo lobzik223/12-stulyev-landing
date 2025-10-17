@@ -13,7 +13,9 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
     const root = scroller.current;
     if (!root) return;
     const card = root.querySelector("article");
-    const step = (card?.clientWidth || 280) + 24; // ширина карточки + gap
+    const isMobile = globalThis.window ? globalThis.window.innerWidth < 640 : false; // sm breakpoint
+    const gap = isMobile ? 16 : 24; // gap-4 = 16px, gap-6 = 24px
+    const step = (card?.clientWidth || (isMobile ? 280 : 320)) + gap;
     root.scrollBy({ left: dir === "left" ? -step : step, behavior: "smooth" });
   };
 
@@ -150,7 +152,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         {/* Горизонтальная лента */}
         <div
           ref={scroller}
-          className="mt-8 flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-1"
+          className="mt-8 flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 sm:px-1"
         >
           {items.map((ev) => (
             <div key={ev.id} className="snap-start shrink-0">
