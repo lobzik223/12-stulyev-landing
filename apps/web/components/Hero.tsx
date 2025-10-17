@@ -1,8 +1,6 @@
-import Image from "next/image";
-
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden">
       {/* Декоративные элементы - Звезды */}
       {/* Существующие звезды */}
       <svg className="absolute top-20 right-20 w-10 h-10 text-amber-400 opacity-30 z-20 animate-star-float-1" fill="currentColor" viewBox="0 0 24 24">
@@ -97,37 +95,24 @@ export default function Hero() {
           {/* Правая колонка - изображение */}
           <div className="order-2 md:order-2">
             <div className="relative">
-              <Image 
+              <img 
                 src="/images/lady-Photoroom.png" 
                 alt="Портрет дамы в театральном костюме" 
-                width={600}
-                height={800}
                 className="w-full h-auto"
                 style={{ background: 'transparent' }}
-                priority
               />
             </div>
           </div>
         </div>
       </div>
       
-      {/* Рваный край - улучшенный для плавного перехода */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent overflow-hidden z-30"> 
-        <svg className="w-full h-full" viewBox="0 0 1200 128" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="tornGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="transparent" />
-              <stop offset="30%" stopColor="rgba(14, 11, 9, 0.3)" />
-              <stop offset="70%" stopColor="rgba(14, 11, 9, 0.8)" />
-              <stop offset="100%" stopColor="#0e0b09" />
-            </linearGradient>
-          </defs>
-          <path 
-            d="M0,64 Q75,32 150,64 Q225,96 300,64 Q375,32 450,64 Q525,96 600,64 Q675,32 750,64 Q825,96 900,64 Q975,32 1050,64 Q1125,96 1200,64 L1200,128 L0,128 Z" 
-            fill="url(#tornGradient)"
-            className="transition-all duration-1000 ease-out"
-          />
-        </svg>
+      {/* Рваный край */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-900 to-transparent overflow-hidden z-30" 
+           style={{
+             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 Q30,45 60,65 Q90,85 120,70 Q150,50 180,75 Q210,90 240,60 Q270,30 300,55 Q330,80 360,65 Q390,40 420,70 Q450,95 480,65 Q510,35 540,70 Q570,90 600,60 Q630,30 660,55 Q690,80 720,65 Q750,40 780,70 Q810,95 840,65 Q870,35 900,70 Q930,90 960,60 Q990,30 1020,55 Q1050,80 1080,65 Q1110,40 1140,70 Q1170,95 1200,60 L1200,120 0,120 Z' fill='%23111827'/%3E%3C/svg%3E")`,
+             backgroundSize: 'cover',
+             backgroundPosition: 'top'
+           }}>
       </div>
     </section>
   );
