@@ -22,7 +22,7 @@ export const mockEvents: EventItem[] = [
     ticketUrl: "https://example.com/tickets",
     status: "scheduled",
     slug: "spb-2025-11-15",
-    poster: "/images/journey/stargorod.jpg",
+    poster: "/images/sankt12.jpg",
     price: 2800
   },
   {

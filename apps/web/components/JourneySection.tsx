@@ -2,12 +2,17 @@
 import { CityScene } from "@/types/journey";
 import Container from "./Container";
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function JourneySection({ items }: Readonly<{ items: CityScene[] }>) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (!containerRef.current) return;
@@ -32,7 +37,9 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
   return (
            <section id="journey" className="py-20 bg-gray-900 text-white relative overflow-hidden" onMouseMove={handleMouseMove}>
              {/* Декоративные элементы - Звезды с эффектом отталкивания */}
-             {/* Верхний левый угол */}
+             {isClient && (
+               <>
+                 {/* Верхний левый угол */}
              <svg 
                className="absolute top-16 left-16 w-6 h-6 text-amber-400 opacity-30 z-20 animate-star-float-1 transition-transform duration-300" 
                fill="currentColor" 
@@ -50,7 +57,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 100) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 100) * 0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 100) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 100) * 0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -62,7 +69,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 100) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 100) * -0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 100) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 100) * -0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -74,7 +81,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 100) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 100) * 0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 100) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 100) * 0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -86,7 +93,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 80) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 80) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -98,7 +105,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 80) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 80) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -110,7 +117,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 80) * 0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 80) * 0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -122,7 +129,7 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 80) * -0.02))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 80) * -0.02))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -134,11 +141,13 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
                fill="currentColor" 
                viewBox="0 0 24 24"
                style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * 0.01))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.01))}px)`
+                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.01))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.01))}px)`
                }}
              >
                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
              </svg>
+               </>
+             )}
       
       <Container>
         <div className="text-center mb-16">

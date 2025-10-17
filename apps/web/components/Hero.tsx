@@ -93,14 +93,14 @@ export default function Hero() {
           </div>
           
           {/* Правая колонка - изображение */}
-          <div className="order-2 md:order-2">
-            <div className="relative">
-              <img 
-                src="/images/lady-Photoroom.png" 
-                alt="Портрет дамы в театральном костюме" 
-                className="w-full h-auto"
-                style={{ background: 'transparent' }}
-              />
+          <div className="order-2 md:order-2 flex items-start justify-end">
+            <div className="relative mt-48">
+                      <img 
+                        src="/images/stulya12log.png" 
+                        alt="Логотип спектакля 12 стульев" 
+                        className="w-full h-auto max-w-none scale-125"
+                        style={{ background: 'transparent' }}
+                      />
             </div>
           </div>
         </div>

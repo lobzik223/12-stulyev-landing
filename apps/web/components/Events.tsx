@@ -1,19 +1,24 @@
 "use client";
 import Container from "./Container";
 import { EventItem } from "@/types/events";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import TicketCard from "./TicketCard";
 import ArrowButton from "./ArrowButton";
 
 export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
   const scroller = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const scrollBy = (dir: "left" | "right") => {
     const root = scroller.current;
     if (!root) return;
     const card = root.querySelector("article");
-    const isMobile = globalThis.window ? globalThis.window.innerWidth < 640 : false; // sm breakpoint
+    const isMobile = isClient && window.innerWidth < 640; // sm breakpoint
     const gap = isMobile ? 16 : 24; // gap-4 = 16px, gap-6 = 24px
     const step = (card?.clientWidth || (isMobile ? 280 : 320)) + gap;
     root.scrollBy({ left: dir === "left" ? -step : step, behavior: "smooth" });
@@ -26,13 +31,15 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
   return (
     <section id="events" className="relative py-20 bg-gray-900 text-white overflow-hidden" onMouseMove={handleMouseMove}>
       {/* Декоративные элементы - Звезды с эффектом отталкивания */}
-      {/* Верхний правый угол */}
+      {isClient && (
+        <>
+          {/* Верхний правый угол */}
       <svg 
         className="absolute top-12 right-12 w-8 h-8 text-amber-400 opacity-30 z-20 animate-star-float-1 transition-transform duration-300" 
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 80) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 80) * 0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 80) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 80) * 0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -44,7 +51,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 80) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 80) * -0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 80) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 80) * -0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -56,7 +63,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 60) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 60) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -68,7 +75,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 60) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 60) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -80,7 +87,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 60) * 0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 60) * 0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -92,7 +99,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 60) * -0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 60) * -0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -116,7 +123,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200) + 120) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800) + 120) * 0.02))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 120) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 120) * 0.02))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -128,11 +135,13 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         fill="currentColor" 
         viewBox="0 0 24 24"
         style={{
-          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 1200)/2) * 0.01))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 800)/2) * 0.01))}px)`
+          transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.01))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.01))}px)`
         }}
       >
         <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
       </svg>
+        </>
+      )}
       
       <Container>
         <div className="flex items-center justify-between gap-4 mb-12">
