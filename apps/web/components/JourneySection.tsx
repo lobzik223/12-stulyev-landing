@@ -9,10 +9,28 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isClient, setIsClient] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (!containerRef.current) return;
@@ -197,83 +215,108 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
       </Container>
 
       <div className="mt-8 overflow-x-auto scrollbar-hide px-4 md:px-8" ref={containerRef}>
-        <div className="flex gap-6 min-w-[700px] snap-x snap-mandatory journey-section">
+        <div className="flex gap-4 min-w-[1200px] snap-x snap-mandatory journey-section">
           {items.map((c, index) => (
-            <motion.article
-              key={c.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ 
-                y: -8, 
-                scale: 1.02,
-                transition: { duration: 0.2 }
-              }}
-              className="snap-start w-[320px] shrink-0 rounded-2xl overflow-hidden relative border border-amber-200 bg-white shadow-xl journey-card group hover:shadow-2xl transition-all duration-300"
+            <motion.div 
+              key={c.id} 
+              className="snap-start shrink-0"
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={isVisible ? { 
+                opacity: 1, 
+                y: 0, 
+                scale: 1,
+                transition: {
+                  duration: 0.6,
+                  delay: index * 0.2,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }
+              } : {}}
             >
-              {/* Декоративные элементы */}
-              <motion.div
-                className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
-                initial={{ scale: 0, rotate: -10 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.5 + index * 0.1, duration: 0.3 }}
+              <motion.article
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+                className="w-[280px] rounded-2xl overflow-hidden relative bg-gradient-to-br from-amber-50 to-white shadow-xl journey-card group hover:shadow-2xl transition-all duration-300 border border-amber-200/50"
               >
-                {index % 3 === 0 && <img src="/decors/train.svg" alt="Поезд" className="w-8 h-8" />}
-                {index % 3 === 1 && <img src="/decors/suitcase.svg" alt="Чемодан" className="w-8 h-8" />}
-                {index % 3 === 2 && <img src="/decors/chess.svg" alt="Шахматы" className="w-8 h-8" />}
-              </motion.div>
-              {/* Анимированный градиент при наведении */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-amber-100/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={false}
-              />
-
-              <div
-                className="h-44 w-full bg-center bg-cover relative overflow-hidden"
-                style={{ backgroundImage: `url(${c.image})` }}
-              >
-                {/* Анимированное затемнение */}
+                {/* Декоративные элементы */}
                 <motion.div
-                  className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"
+                  className="absolute top-4 right-4 opacity-30 group-hover:opacity-60 transition-opacity duration-300 z-10"
+                  initial={{ scale: 0, rotate: -10 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ delay: 0.5 + index * 0.2, duration: 0.3 }}
+                >
+                  {index % 3 === 0 && <img src="/decors/train.svg" alt="Поезд" className="w-10 h-10" />}
+                  {index % 3 === 1 && <img src="/decors/suitcase.svg" alt="Чемодан" className="w-10 h-10" />}
+                  {index % 3 === 2 && <img src="/decors/chess.svg" alt="Шахматы" className="w-10 h-10" />}
+                </motion.div>
+
+                {/* Звездочка в углу */}
+                <motion.div
+                  className="absolute top-4 left-4 z-10"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.3 + index * 0.2, duration: 0.3 }}
+                >
+                  <svg className="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+                  </svg>
+                </motion.div>
+
+                {/* Анимированный градиент при наведении */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-amber-100/20 via-orange-50/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={false}
                 />
 
-                {/* Анимированный заголовок */}
-                <motion.h3
-                  className="absolute bottom-4 left-4 text-xl font-semibold text-white drop-shadow-lg"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileHover={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
+                <div
+                  className="h-40 w-full bg-center bg-cover relative overflow-hidden"
+                  style={{ backgroundImage: `url(${c.image})` }}
                 >
-                  {c.title}
-                </motion.h3>
-              </div>
-              
-              <motion.div
-                className="p-6"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 + index * 0.1 }}
-              >
-                <p className="text-gray-600 mt-1 text-sm leading-relaxed">{c.summary}</p>
-                {c.quote && (
-                         <motion.blockquote
-                           className="mt-3 text-sm italic text-amber-700 border-l-2 border-amber-300 pl-3"
-                           initial={{ opacity: 0, x: -10 }}
-                           animate={{ opacity: 1, x: 0 }}
-                           transition={{ delay: 0.5 + index * 0.1 }}
-                         >
-                           &ldquo;{c.quote}&rdquo;
-                         </motion.blockquote>
-                )}
-              </motion.div>
+                  {/* Анимированное затемнение */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/50 transition-all duration-300"
+                    initial={false}
+                  />
 
-              {/* Анимированная рамка */}
-              <motion.div
-                className="absolute inset-0 border-2 border-amber-200/0 group-hover:border-amber-300/40 rounded-2xl transition-colors duration-300"
-                initial={false}
-              />
-            </motion.article>
+                  {/* Анимированный заголовок */}
+                  <motion.h3
+                    className="absolute bottom-4 left-4 text-xl font-bold text-white drop-shadow-2xl font-serif"
+                    initial={{ opacity: 0, y: 15 }}
+                    whileHover={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {c.title}
+                  </motion.h3>
+                </div>
+                
+                <motion.div
+                  className="p-6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 + index * 0.2 }}
+                >
+                  <p className="text-gray-700 text-sm leading-relaxed font-medium">{c.summary}</p>
+                  {c.quote && (
+                           <motion.blockquote
+                             className="mt-4 text-sm italic text-amber-700 border-l-3 border-amber-400 pl-3 font-script bg-amber-50/50 rounded-r-lg py-2"
+                             initial={{ opacity: 0, x: -15 }}
+                             animate={{ opacity: 1, x: 0 }}
+                             transition={{ delay: 0.7 + index * 0.2 }}
+                           >
+                             &ldquo;{c.quote}&rdquo;
+                           </motion.blockquote>
+                  )}
+                </motion.div>
+
+                {/* Анимированная рамка */}
+                <motion.div
+                  className="absolute inset-0 border-2 border-amber-300/0 group-hover:border-amber-400/60 rounded-2xl transition-all duration-300"
+                  initial={false}
+                />
+              </motion.article>
+            </motion.div>
           ))}
         </div>
       </div>
