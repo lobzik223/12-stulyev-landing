@@ -34,9 +34,9 @@ export default function ScrollWaves() {
 
   return (
     <div className="relative w-full h-32 overflow-hidden">
-      {/* Волна 1 */}
+      {/* Волна 1 - движется влево с легким подъемом */}
       <svg 
-        className={`absolute w-full h-full transition-all duration-300 ${isScrolling ? 'animate-wave-slow' : ''}`}
+        className={`absolute w-full h-full transition-all duration-300 ${isScrolling ? 'animate-wave-slow-1' : ''}`}
         viewBox="0 0 1200 120" 
         preserveAspectRatio="none"
         style={{ 
@@ -50,9 +50,9 @@ export default function ScrollWaves() {
         />
       </svg>
       
-      {/* Волна 2 */}
+      {/* Волна 2 - движется вправо с небольшими колебаниями */}
       <svg 
-        className={`absolute w-full h-full transition-all duration-300 ${isScrolling ? 'animate-wave-slow' : ''}`}
+        className={`absolute w-full h-full transition-all duration-300 ${isScrolling ? 'animate-wave-slow-2' : ''}`}
         viewBox="0 0 1200 120" 
         preserveAspectRatio="none"
         style={{ 
@@ -66,9 +66,9 @@ export default function ScrollWaves() {
         />
       </svg>
       
-      {/* Волна 3 */}
+      {/* Волна 3 - медленно движется влево с минимальными колебаниями */}
       <svg 
-        className={`absolute w-full h-full transition-all duration-300 ${isScrolling ? 'animate-wave-slow' : ''}`}
+        className={`absolute w-full h-full transition-all duration-300 ${isScrolling ? 'animate-wave-slow-3' : ''}`}
         viewBox="0 0 1200 120" 
         preserveAspectRatio="none"
         style={{ 

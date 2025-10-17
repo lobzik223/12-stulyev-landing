@@ -105,9 +105,6 @@ html {
   scroll-snap-align: start;
 }
 
-/* скрыть системный скролл у горизонтальных лент */
-.scrollbar-hide::-webkit-scrollbar { display: none; }
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
        /* Красивые анимации для рваных краёв */
        @keyframes tornEdgeFloat {
@@ -287,14 +284,40 @@ html {
          z-index: 1;
        }
 
-       /* Медленная анимация волн только при скролле */
-       @keyframes waveSlow {
-         0% { transform: translateX(0px); }
-         50% { transform: translateX(-20px); }
-         100% { transform: translateX(0px); }
+       /* Естественная анимация волн только при скролле */
+       @keyframes waveFlow1 {
+         0% { transform: translateX(0px) translateY(0px); }
+         25% { transform: translateX(-15px) translateY(-3px); }
+         50% { transform: translateX(-30px) translateY(0px); }
+         75% { transform: translateX(-15px) translateY(3px); }
+         100% { transform: translateX(0px) translateY(0px); }
        }
 
-       .animate-wave-slow {
-         animation: waveSlow 3s ease-in-out infinite;
+       @keyframes waveFlow2 {
+         0% { transform: translateX(0px) translateY(0px); }
+         25% { transform: translateX(20px) translateY(2px); }
+         50% { transform: translateX(35px) translateY(0px); }
+         75% { transform: translateX(20px) translateY(-2px); }
+         100% { transform: translateX(0px) translateY(0px); }
+       }
+
+       @keyframes waveFlow3 {
+         0% { transform: translateX(0px) translateY(0px); }
+         25% { transform: translateX(-10px) translateY(-1px); }
+         50% { transform: translateX(-25px) translateY(1px); }
+         75% { transform: translateX(-10px) translateY(0px); }
+         100% { transform: translateX(0px) translateY(0px); }
+       }
+
+       .animate-wave-slow-1 {
+         animation: waveFlow1 4s ease-in-out infinite;
+       }
+
+       .animate-wave-slow-2 {
+         animation: waveFlow2 3.5s ease-in-out infinite;
+       }
+
+       .animate-wave-slow-3 {
+         animation: waveFlow3 4.5s ease-in-out infinite;
        }
 
