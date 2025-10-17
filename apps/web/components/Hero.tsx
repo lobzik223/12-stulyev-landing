@@ -111,7 +111,7 @@ export default function Hero() {
         <svg className="w-full h-full" viewBox="0 0 1200 96" preserveAspectRatio="none">
           <path 
             d="M0,48 Q150,24 300,48 T600,48 T900,48 T1200,48 L1200,96 L0,96 Z" 
-            fill="#0e0b09"
+            fill="#111827"
           />
         </svg>
       </div>
