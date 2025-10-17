@@ -1,12 +1,12 @@
 import Hero from "@/components/Hero";
 import Events from "@/components/Events";
-import SectionDivider from "@/components/SectionDivider";
 import JourneySection from "@/components/JourneySection";
 import TrailerSection from "@/components/TrailerSection";
 import GallerySection from "@/components/GallerySection";
 import ActorsSection from "@/components/ActorsSection";
 import HistorySection from "@/components/HistorySection";
 import ContactsSection from "@/components/ContactsSection";
+import ScrollTransition from "@/components/ScrollTransition";
 
 import { mockEvents } from "@/data/mocks/events";
 import { journey } from "@/data/mocks/journey";
@@ -24,6 +24,7 @@ export default async function Page() {
 
   return (
     <>
+      <ScrollTransition />
       <Hero />
       <Events items={events} />
 

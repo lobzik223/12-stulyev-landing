@@ -22,7 +22,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
   };
 
   return (
-    <section id="events" className="relative py-20 bg-gray-900 text-white overflow-hidden" onMouseMove={handleMouseMove}>
+    <section id="events" className="relative py-20 bg-gray-900 text-white overflow-hidden transition-all duration-1000 ease-out" onMouseMove={handleMouseMove}>
       {/* Декоративные элементы - Звезды с эффектом отталкивания */}
       {/* Верхний правый угол */}
       <svg 

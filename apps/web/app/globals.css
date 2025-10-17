@@ -285,4 +285,59 @@ html {
          background: #fef3c7;
          clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
          z-index: 1;
-}
+       }
+
+       /* Анимации для плавного перехода между секциями */
+       @keyframes waveFlow {
+         0% { transform: translateY(0px) scaleY(1); }
+         50% { transform: translateY(-10px) scaleY(1.1); }
+         100% { transform: translateY(0px) scaleY(1); }
+       }
+
+       @keyframes particleFloat {
+         0%, 100% { 
+           transform: translateY(0px) translateX(0px) rotate(0deg); 
+           opacity: 0.3; 
+         }
+         25% { 
+           transform: translateY(-15px) translateX(5px) rotate(90deg); 
+           opacity: 0.6; 
+         }
+         50% { 
+           transform: translateY(-10px) translateX(-5px) rotate(180deg); 
+           opacity: 0.8; 
+         }
+         75% { 
+           transform: translateY(-20px) translateX(10px) rotate(270deg); 
+           opacity: 0.4; 
+         }
+       }
+
+       .wave-animated {
+         animation: waveFlow 8s ease-in-out infinite;
+       }
+
+       .particle-animated {
+         animation: particleFloat 6s ease-in-out infinite;
+       }
+
+       /* Плавный переход для секций */
+       .section-transition {
+         transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+       }
+
+       /* Эффект появления секций */
+       .section-appear {
+         animation: sectionSlideIn 1s ease-out;
+       }
+
+       @keyframes sectionSlideIn {
+         from {
+           opacity: 0;
+           transform: translateY(30px);
+         }
+         to {
+           opacity: 1;
+           transform: translateY(0);
+         }
+       }
