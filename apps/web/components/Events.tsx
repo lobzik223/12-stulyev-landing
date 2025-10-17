@@ -19,7 +19,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !isVisible) {
           setIsVisible(true);
         }
       },
@@ -31,7 +31,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [isVisible]);
 
   const scrollBy = (dir: "left" | "right") => {
     const root = scroller.current;
@@ -196,7 +196,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
                   delay: index * 0.2,
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }
-              } : { opacity: 0, y: 50, scale: 0.9 }}
+              } : {}}
             >
               <TicketCard ev={ev} />
             </motion.div>

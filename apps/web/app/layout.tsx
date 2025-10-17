@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
 
 const serif = Cormorant_Garamond({ 
   subsets: ["latin", "cyrillic"], 
@@ -25,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${serif.variable} ${sans.variable}`}>
-      <body className="font-sans bg-[#0e0b09] text-white">{children}</body>
+      <body className="font-sans bg-[#0e0b09] text-white">
+        <CustomCursor />
+        {children}
+      </body>
     </html>
   );
 }

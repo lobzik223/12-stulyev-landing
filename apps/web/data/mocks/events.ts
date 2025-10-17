@@ -34,7 +34,7 @@ export const mockEvents: EventItem[] = [
     ticketUrl: "https://example.com/tickets",
     status: "scheduled",
     slug: "nnov-2025-11-20",
-    poster: "/images/journey/nnov.jpg",
+    poster: "/images/nijniy12.jpg",
     price: 1800
   }
 ];

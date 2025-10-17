@@ -1,6 +1,37 @@
+"use client";
+import { useEffect, useState, useRef } from "react";
+
 export default function Hero() {
+  const [scrollY, setScrollY] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const heroRect = heroRef.current.getBoundingClientRect();
+        const heroHeight = heroRef.current.offsetHeight;
+        const windowHeight = window.innerHeight;
+        
+        // Вычисляем прогресс скролла относительно Hero секции
+        const scrollProgress = Math.max(0, Math.min(1, 
+          (windowHeight - heroRect.top) / (heroHeight + windowHeight)
+        ));
+        
+        setScrollY(scrollProgress);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Инициализация
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
-    <section className="relative bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden">
+    <section 
+      ref={heroRef}
+      className="relative bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden"
+    >
       {/* Декоративные элементы - Звезды */}
       {/* Существующие звезды */}
       <svg className="absolute top-20 right-20 w-10 h-10 text-amber-400 opacity-30 z-20 animate-star-float-1" fill="currentColor" viewBox="0 0 24 24">
@@ -94,13 +125,20 @@ export default function Hero() {
           
           {/* Правая колонка - изображение */}
           <div className="order-2 md:order-2 flex items-start justify-end">
-            <div className="relative mt-8 -mb-2">
-                      <img 
-                        src="/images/stulya12log.png" 
-                        alt="Логотип спектакля 12 стульев" 
-                        className="w-full h-auto max-w-none scale-110"
-                        style={{ background: 'transparent' }}
-                      />
+            <div 
+              ref={imageRef}
+              className="relative mt-8 mb-6 transition-transform duration-300 ease-out"
+              style={{
+                transform: `translateY(${scrollY * 400}px)`,
+                zIndex: scrollY > 0.3 ? 5 : 10
+              }}
+            >
+              <img 
+                src="/images/stulya12log.png" 
+                alt="Логотип спектакля 12 стульев" 
+                className="w-full h-auto max-w-none scale-110"
+                style={{ background: 'transparent' }}
+              />
             </div>
           </div>
         </div>
