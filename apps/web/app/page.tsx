@@ -6,7 +6,6 @@ import GallerySection from "@/components/GallerySection";
 import ActorsSection from "@/components/ActorsSection";
 import HistorySection from "@/components/HistorySection";
 import ContactsSection from "@/components/ContactsSection";
-import ScrollWaves from "@/components/ScrollWaves";
 
 import { mockEvents } from "@/data/mocks/events";
 import { journey } from "@/data/mocks/journey";
@@ -25,7 +24,6 @@ export default async function Page() {
   return (
     <>
       <Hero />
-      <ScrollWaves />
       <Events items={events} />
 
       <JourneySection items={journey} />

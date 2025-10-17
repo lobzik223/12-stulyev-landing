@@ -106,6 +106,15 @@ export default function Hero() {
         </div>
       </div>
       
+      {/* Статичный волнистый край */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 overflow-hidden z-30">
+        <svg className="w-full h-full" viewBox="0 0 1200 96" preserveAspectRatio="none">
+          <path 
+            d="M0,48 Q150,24 300,48 T600,48 T900,48 T1200,48 L1200,96 L0,96 Z" 
+            fill="#0e0b09"
+          />
+        </svg>
+      </div>
     </section>
   );
 }
