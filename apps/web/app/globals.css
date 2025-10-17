@@ -287,3 +287,14 @@ html {
          z-index: 1;
        }
 
+       /* Медленная анимация волн только при скролле */
+       @keyframes waveSlow {
+         0% { transform: translateX(0px); }
+         50% { transform: translateX(-20px); }
+         100% { transform: translateX(0px); }
+       }
+
+       .animate-wave-slow {
+         animation: waveSlow 3s ease-in-out infinite;
+       }
+
