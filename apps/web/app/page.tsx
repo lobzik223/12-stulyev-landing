@@ -1,4 +1,6 @@
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import EventsPreview from "@/components/EventsPreview";
 import Events from "@/components/Events";
 import JourneySection from "@/components/JourneySection";
 import TrailerSection from "@/components/TrailerSection";
@@ -8,7 +10,6 @@ import HistorySection from "@/components/HistorySection";
 import ContactsSection from "@/components/ContactsSection";
 
 import { mockEvents } from "@/data/mocks/events";
-import { journey } from "@/data/mocks/journey";
 import { trailer } from "@/data/mocks/trailer";
 import { gallery } from "@/data/mocks/gallery";
 import { actors, crew } from "@/data/mocks/actors";
@@ -23,10 +24,12 @@ export default async function Page() {
 
   return (
     <>
+      <Header />
       <Hero />
+      <EventsPreview />
       <Events items={events} />
 
-      <JourneySection items={journey} />
+      <JourneySection />
 
       <TrailerSection data={trailer} />
 

@@ -177,6 +177,22 @@ html {
          75% { transform: translate(3px, -2px) rotate(1deg); }
        }
 
+       /* Мягкие анимации для мобильных */
+       @media (max-width: 768px) {
+         .animate-star-float-1,
+         .animate-star-float-2,
+         .animate-star-float-3,
+         .animate-star-float-4,
+         .animate-star-float-5,
+         .animate-star-float-6,
+         .animate-star-float-7,
+         .animate-star-float-8,
+         .animate-star-float-9 {
+           animation-duration: 12s !important;
+           opacity: 0.2 !important;
+         }
+       }
+
        @keyframes starFloat2 {
          0%, 100% { transform: translate(0, 0) rotate(0deg); }
          30% { transform: translate(-2px, 3px) rotate(-2deg); }

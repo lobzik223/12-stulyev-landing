@@ -19,8 +19,10 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
+        if (entry.isIntersecting) {
           setIsVisible(true);
+        } else {
+          setIsVisible(false);
         }
       },
       { threshold: 0.1 }
@@ -31,7 +33,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
     }
 
     return () => observer.disconnect();
-  }, [isVisible]);
+  }, []);
 
   const scrollBy = (dir: "left" | "right") => {
     const root = scroller.current;
@@ -48,7 +50,7 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
   };
 
   return (
-    <section id="events" className="relative py-20 bg-gray-900 text-white overflow-hidden" onMouseMove={handleMouseMove}>
+    <section id="events" className="relative pt-16 pb-24 bg-gray-900 text-white overflow-hidden" onMouseMove={handleMouseMove} aria-label="Ближайшие события">
       {/* Декоративные элементы - Звезды с эффектом отталкивания */}
       {isClient && (
         <>
@@ -165,9 +167,6 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
       <Container>
         <div className="flex items-center justify-between gap-4 mb-12">
                  <div>
-                   <div className="inline-block px-3 py-1 bg-amber-400/10 border border-amber-400/30 rounded-full text-sm font-medium text-amber-400 mb-3">
-                     Расписание
-                   </div>
                    <h2 className="text-4xl md:text-5xl font-bold font-serif">Ближайшие даты</h2>
                    <p className="mt-3 text-lg text-gray-300">Выберите город и купите билеты</p>
                  </div>
@@ -184,21 +183,30 @@ export default function Events({ items }: Readonly<{ items: EventItem[] }>) {
         >
           {items.map((ev, index) => (
             <motion.div 
-              key={ev.id} 
+              key={`${ev.id}-${isVisible}`} 
               className="snap-start shrink-0"
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              initial={{ 
+                opacity: 0, 
+                x: 100
+              }}
               animate={isVisible ? { 
                 opacity: 1, 
-                y: 0, 
-                scale: 1,
+                x: 0,
                 transition: {
                   duration: 0.6,
-                  delay: index * 0.2,
-                  ease: [0.25, 0.46, 0.45, 0.94]
+                  delay: index * 0.1,
+                  ease: "easeOut"
                 }
-              } : {}}
+              } : { 
+                opacity: 0, 
+                x: 100 
+              }}
+              whileHover={{
+                y: -5,
+                transition: { duration: 0.2 }
+              }}
             >
-              <TicketCard ev={ev} />
+              <TicketCard ev={ev} index={index} />
             </motion.div>
           ))}
         </div>

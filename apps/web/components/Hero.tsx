@@ -31,83 +31,66 @@ export default function Hero() {
   return (
     <section 
       ref={heroRef}
-      className="relative bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 text-gray-900 overflow-hidden"
+      className="relative text-gray-900 overflow-hidden"
+      style={{
+        backgroundImage: 'url(/images/esk.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
-      {/* Декоративные элементы - Звезды */}
-      {/* Существующие звезды */}
-      <svg className="absolute top-20 right-20 w-10 h-10 text-amber-400 opacity-30 z-20 animate-star-float-1" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-      </svg>
-      <svg className="absolute bottom-20 left-20 w-8 h-8 text-amber-400 opacity-40 z-20 animate-star-float-2" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-      </svg>
       
-      {/* Дополнительные звезды */}
-      {/* Верхний левый угол */}
-      <svg className="absolute top-16 left-16 w-6 h-6 text-amber-400 opacity-25 z-20 animate-star-float-3" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-      </svg>
+      {/* Полупрозрачный слой для читаемости текста */}
+      <div className="absolute inset-0 bg-white/20 backdrop-blur-[0.5px] z-5"></div>
       
-      {/* Над текстом "театральное" */}
-      <svg className="absolute top-32 left-32 w-5 h-5 text-amber-400 opacity-35 z-20 animate-star-float-4" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-      </svg>
-      
-      {/* Справа от головы дамы */}
-      <svg className="absolute top-24 right-32 w-7 h-7 text-amber-400 opacity-30 z-20 animate-star-float-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-      </svg>
-      
-      {/* Справа от груди дамы */}
-      <svg className="absolute top-40 right-24 w-6 h-6 text-amber-400 opacity-35 z-20 animate-star-float-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-      </svg>
-      
-      {/* Под кнопкой "О спектакле" */}
-      <svg className="absolute bottom-32 left-32 w-5 h-5 text-amber-400 opacity-40 z-20 animate-star-float-7" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-      </svg>
-      
-      {/* Снизу слева от дамы */}
-      <svg className="absolute bottom-40 left-40 w-7 h-7 text-amber-400 opacity-30 z-20 animate-star-float-8" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-      </svg>
-      
-      {/* Нижний правый угол */}
-      <svg className="absolute bottom-24 right-16 w-6 h-6 text-amber-400 opacity-35 z-20 animate-star-float-9" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-      </svg>
-      
-      <div className="mx-auto max-w-6xl relative z-10 pl-4 pr-8">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Левая колонка - контент */}
-          <div className="order-1 md:order-1">
+      <div className="mx-auto max-w-7xl relative z-10 pl-4 pr-4 pt-20 md:pt-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 items-center min-h-screen">
+          {/* Левая колонка - первое изображение */}
+          <div className="order-2 md:order-1 hidden md:flex items-start justify-center">
+            <div 
+              className="relative -mt-48 mb-0 md:-mt-48 md:mb-6 transition-transform duration-300 ease-out w-full max-w-3xl md:max-w-4xl"
+              style={{
+                transform: `translateY(${scrollY * 400}px)`,
+                zIndex: scrollY > 0.3 ? 5 : 10
+              }}
+            >
+              <img 
+                src="/images/stul11.png" 
+                alt="Персонаж спектакля 12 стульев" 
+                className="w-full h-auto scale-100"
+                style={{ background: 'transparent' }}
+              />
+            </div>
+          </div>
+          
+          {/* Центральная колонка - контент */}
+          <div className="order-1 md:order-2 text-center">
             {/* Главный заголовок */}
             <motion.div 
-              className="mb-6 -mt-8"
+              className="mb-4 mt-8 md:mt-10 md:-mt-8"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                 <motion.span 
-                  className="block text-gray-900 font-serif"
+                  className="inline text-amber-700 font-serif text-3xl sm:text-4xl md:text-5xl font-bold whitespace-nowrap -ml-16 md:-ml-32 -mt-2 md:-mt-4"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  «<span className="text-7xl md:text-8xl">12</span> СТУЛЬЕВ»
+                  «<span className="text-4xl sm:text-5xl md:text-6xl font-black">12</span> СТУЛЬЕВ» <span className="text-gray-900 text-4xl sm:text-5xl md:text-6xl font-bold">100 лет спустя</span>
                 </motion.span>
                 <motion.span 
-                  className="block text-amber-700 font-script text-4xl md:text-5xl mt-2"
+                  className="block text-amber-700 font-script text-xl sm:text-2xl md:text-3xl mt-1"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.35 }}
                 >
                   театральное
                 </motion.span>
                 <motion.span 
-                  className="block text-gray-900 font-serif text-5xl md:text-7xl"
+                  className="block text-gray-900 font-serif text-3xl sm:text-4xl md:text-5xl"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
@@ -119,13 +102,13 @@ export default function Hero() {
             
             {/* Описание */}
             <motion.div 
-              className="max-w-3xl mb-8"
+              className="max-w-2xl mb-4 md:mb-6 mx-auto"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               <motion.p 
-                className="text-lg md:text-xl leading-relaxed text-amber-700 mb-6 font-script"
+                className="text-lg sm:text-xl md:text-xl leading-relaxed text-amber-700 mb-3 md:mb-6 font-script px-4 md:px-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.6 }}
@@ -133,7 +116,7 @@ export default function Hero() {
                 Классическая комедия Ильфа и Петрова в современной театральной интерпретации
               </motion.p>
               <motion.p 
-                className="text-base md:text-lg text-gray-900 leading-relaxed font-script"
+                className="text-base sm:text-lg md:text-lg text-gray-900 leading-relaxed font-script px-4 md:px-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.7 }}
@@ -144,56 +127,55 @@ export default function Hero() {
             
             {/* Кнопки */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3 mt-4 md:mt-6 justify-center"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.8 }}
             >
               <motion.a
                 href="#events"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-amber-600 text-white font-semibold text-sm md:text-base rounded-lg hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 mx-2 md:mx-0"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.9 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
-                Посмотреть расписание
+                <span className="whitespace-nowrap">Посмотреть расписание</span>
               </motion.a>
               <motion.a
                 href="#about"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-amber-600 text-amber-700 font-semibold rounded-lg hover:bg-amber-50 hover:border-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 md:px-6 md:py-3 border-2 border-amber-600 text-amber-700 font-semibold text-sm md:text-base rounded-lg hover:bg-amber-50 hover:border-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 mx-2 md:mx-0"
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 1.0 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                О спектакле
+                <span className="whitespace-nowrap">О спектакле</span>
               </motion.a>
             </motion.div>
           </div>
           
-          {/* Правая колонка - изображение */}
-          <div className="order-2 md:order-2 flex items-start justify-end">
+          {/* Правая колонка - второе изображение */}
+          <div className="order-2 md:order-3 flex items-center justify-center md:items-start md:justify-end">
             <div 
-              ref={imageRef}
-              className="relative mt-8 mb-6 transition-transform duration-300 ease-out"
+              className="relative -mt-8 mb-0 md:-mt-48 md:mb-6 transition-transform duration-300 ease-out w-full max-w-sm md:max-w-4xl"
               style={{
                 transform: `translateY(${scrollY * 400}px)`,
                 zIndex: scrollY > 0.3 ? 5 : 10
               }}
             >
               <img 
-                src="/images/stulya12log.png" 
-                alt="Логотип спектакля 12 стульев" 
-                className="w-full h-auto max-w-none scale-110"
+                src="/images/stul13.png" 
+                alt="Персонаж спектакля 12 стульев" 
+                className="w-full h-auto scale-100"
                 style={{ background: 'transparent' }}
               />
             </div>

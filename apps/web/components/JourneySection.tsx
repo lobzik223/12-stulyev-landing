@@ -1,172 +1,43 @@
 "use client";
-import { CityScene } from "@/types/journey";
 import Container from "./Container";
 import { motion } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-export default function JourneySection({ items }: Readonly<{ items: CityScene[] }>) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isClient, setIsClient] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+export default function JourneySection() {
+  const [isSticky, setIsSticky] = useState(false);
+  const [activeSection, setActiveSection] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
 
+  // Sticky timeline effect - only when timeline touches main header
   useEffect(() => {
-    setIsClient(true);
+    const handleScroll = () => {
+      if (timelineRef.current && sectionRef.current) {
+        const sectionRect = sectionRef.current.getBoundingClientRect();
+        
+        // Show sticky only when timeline would touch main header (80px from top)
+        // and section is still visible
+        if (sectionRect.top <= 80 && sectionRect.bottom > 200) {
+          setIsSticky(true);
+    } else {
+          setIsSticky(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isVisible]);
-
-  const handleScroll = (direction: 'left' | 'right') => {
-    if (!containerRef.current) return;
-
-    const container = containerRef.current;
-    const cardWidth = 320 + 24; // width + gap
-    const scrollAmount = cardWidth;
-
-    if (direction === 'right') {
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      setCurrentIndex(prev => Math.min(prev + 1, items.length - 1));
-    } else {
-      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      setCurrentIndex(prev => Math.max(prev - 1, 0));
-    }
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
+  const timelineItems = [
+    "Наследие «Двенадцати стульев»",
+    "Искромётная комедия",
+    "Современная «перезагрузка»",
+    "Живая атмосфера"
+  ];
 
   return (
-           <section id="journey" className="py-20 bg-gray-900 text-white relative overflow-hidden" onMouseMove={handleMouseMove}>
-             {/* Декоративные элементы - Звезды с эффектом отталкивания */}
-             {isClient && (
-               <>
-                 {/* Верхний левый угол */}
-             <svg 
-               className="absolute top-16 left-16 w-6 h-6 text-amber-400 opacity-30 z-20 animate-star-float-1 transition-transform duration-300" 
-               fill="currentColor" 
-               viewBox="0 0 24 24"
-               style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 100) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 100) * 0.02))}px)`
-               }}
-             >
-               <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-             </svg>
-             
-             {/* Верхний правый угол */}
-             <svg 
-               className="absolute top-20 right-20 w-8 h-8 text-amber-400 opacity-35 z-20 animate-star-float-2 transition-transform duration-300" 
-               fill="currentColor" 
-               viewBox="0 0 24 24"
-               style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 100) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 100) * 0.02))}px)`
-               }}
-             >
-               <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-             </svg>
-             
-             {/* Нижний левый угол */}
-             <svg 
-               className="absolute bottom-20 left-20 w-7 h-7 text-amber-400 opacity-40 z-20 animate-star-float-3 transition-transform duration-300" 
-               fill="currentColor" 
-               viewBox="0 0 24 24"
-               style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 100) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 100) * -0.02))}px)`
-               }}
-             >
-               <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-             </svg>
-             
-             {/* Нижний правый угол */}
-             <svg 
-               className="absolute bottom-16 right-16 w-5 h-5 text-amber-400 opacity-25 z-20 animate-star-float-4 transition-transform duration-300" 
-               fill="currentColor" 
-               viewBox="0 0 24 24"
-               style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 100) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 100) * 0.02))}px)`
-               }}
-             >
-               <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-             </svg>
-             
-             {/* Центр слева */}
-             <svg 
-               className="absolute top-1/2 left-12 w-4 h-4 text-amber-400 opacity-30 z-20 animate-star-float-5 transition-transform duration-300" 
-               fill="currentColor" 
-               viewBox="0 0 24 24"
-               style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - 80) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
-               }}
-             >
-               <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-             </svg>
-             
-             {/* Центр справа */}
-             <svg 
-               className="absolute top-1/2 right-12 w-6 h-6 text-amber-400 opacity-35 z-20 animate-star-float-6 transition-transform duration-300" 
-               fill="currentColor" 
-               viewBox="0 0 24 24"
-               style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth + 80) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.02))}px)`
-               }}
-             >
-               <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-             </svg>
-             
-             {/* Верхний центр */}
-             <svg 
-               className="absolute top-12 left-1/2 w-5 h-5 text-amber-400 opacity-40 z-20 animate-star-float-7 transition-transform duration-300" 
-               fill="currentColor" 
-               viewBox="0 0 24 24"
-               style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - 80) * 0.02))}px)`
-               }}
-             >
-               <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-             </svg>
-             
-             {/* Нижний центр */}
-             <svg 
-               className="absolute bottom-12 left-1/2 w-4 h-4 text-amber-400 opacity-25 z-20 animate-star-float-8 transition-transform duration-300" 
-               fill="currentColor" 
-               viewBox="0 0 24 24"
-               style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * -0.02))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight + 80) * -0.02))}px)`
-               }}
-             >
-               <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-             </svg>
-             
-             {/* Центр экрана */}
-             <svg 
-               className="absolute top-1/2 left-1/2 w-3 h-3 text-amber-400 opacity-20 z-20 animate-star-float-9 transition-transform duration-300" 
-               fill="currentColor" 
-               viewBox="0 0 24 24"
-               style={{
-                 transform: `translate(${Math.max(-20, Math.min(20, (mousePosition.x - window.innerWidth/2) * 0.01))}px, ${Math.max(-20, Math.min(20, (mousePosition.y - window.innerHeight/2) * 0.01))}px)`
-               }}
-             >
-               <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-             </svg>
-               </>
-             )}
-      
+    <section ref={sectionRef} id="journey" className="py-20 bg-gray-900 text-white relative overflow-hidden">
       <Container>
         <div className="text-center mb-16">
                  <div className="inline-block px-4 py-2 bg-amber-400/10 border border-amber-400/30 rounded-full text-sm font-medium text-amber-400 mb-4">
@@ -178,148 +49,268 @@ export default function JourneySection({ items }: Readonly<{ items: CityScene[] 
           </p>
         </div>
           
-        {/* Навигационные кнопки */}
-        <div className="flex gap-2">
-          <motion.button
-            onClick={() => handleScroll('left')}
-            disabled={currentIndex === 0}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`p-3 rounded-full border border-amber-400/30 transition-all ${
-              currentIndex === 0
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-amber-400/10 hover:border-amber-400/60'
-            }`}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </motion.button>
-
-          <motion.button
-            onClick={() => handleScroll('right')}
-            disabled={currentIndex === items.length - 1}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`p-3 rounded-full border border-amber-400/30 transition-all ${
-              currentIndex === items.length - 1
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-amber-400/10 hover:border-amber-400/60'
-            }`}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </motion.button>
-        </div>
-      </Container>
-
-      <div className="mt-8 overflow-x-auto scrollbar-hide px-4 md:px-8" ref={containerRef}>
-        <div className="flex gap-4 min-w-[1200px] snap-x snap-mandatory journey-section">
-          {items.map((c, index) => (
-            <motion.div 
-              key={c.id} 
-              className="snap-start shrink-0"
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={isVisible ? { 
-                opacity: 1, 
-                y: 0, 
-                scale: 1,
-                transition: {
-                  duration: 0.6,
-                  delay: index * 0.2,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }
-              } : {}}
+        {/* Fixed Size Timeline Navigation */}
+        <div 
+          ref={timelineRef}
+          className={`${isSticky ? 'fixed top-20 left-1/2 transform -translate-x-1/2 z-50' : 'relative'} transition-all duration-200 ease-out`}
+        >
+          {/* Larger rounded container */}
+          <div className="relative">
+            {/* Vintage paper background */}
+            <div 
+              className="backdrop-blur-md rounded-2xl border border-amber-200/20 shadow-lg shadow-black/30 px-8 py-6 relative overflow-hidden"
+              style={{
+                backgroundImage: 'url("/images/esk.png")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+              }}
             >
-              <motion.article
-                whileHover={{ 
-                  y: -8, 
-                  scale: 1.02,
-                  transition: { duration: 0.2 }
-                }}
-                className="w-[280px] rounded-2xl overflow-hidden relative bg-gradient-to-br from-amber-50 to-white shadow-xl journey-card group hover:shadow-2xl transition-all duration-300 border border-amber-200/50"
-              >
-                {/* Декоративные элементы */}
-                <motion.div
-                  className="absolute top-4 right-4 opacity-30 group-hover:opacity-60 transition-opacity duration-300 z-10"
-                  initial={{ scale: 0, rotate: -10 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 0.5 + index * 0.2, duration: 0.3 }}
-                >
-                  {index % 3 === 0 && <img src="/decors/train.svg" alt="Поезд" className="w-10 h-10" />}
-                  {index % 3 === 1 && <img src="/decors/suitcase.svg" alt="Чемодан" className="w-10 h-10" />}
-                  {index % 3 === 2 && <img src="/decors/chess.svg" alt="Шахматы" className="w-10 h-10" />}
-                </motion.div>
-
-                {/* Звездочка в углу */}
-                <motion.div
-                  className="absolute top-4 left-4 z-10"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.3 + index * 0.2, duration: 0.3 }}
-                >
-                  <svg className="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.908-7.417 3.908 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-                  </svg>
-                </motion.div>
-
-                {/* Анимированный градиент при наведении */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-amber-100/20 via-orange-50/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={false}
-                />
-
-                <div
-                  className="h-40 w-full bg-center bg-cover relative overflow-hidden"
-                  style={{ backgroundImage: `url(${c.image})` }}
-                >
-                  {/* Анимированное затемнение */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/50 transition-all duration-300"
-                    initial={false}
-                  />
-
-                  {/* Анимированный заголовок */}
-                  <motion.h3
-                    className="absolute bottom-4 left-4 text-xl font-bold text-white drop-shadow-2xl font-serif"
-                    initial={{ opacity: 0, y: 15 }}
-                    whileHover={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {c.title}
-                  </motion.h3>
-                </div>
+              {/* Vintage overlay for better text contrast */}
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-50/80 via-amber-100/60 to-amber-200/40 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-amber-300/20 via-transparent to-amber-200/30 rounded-2xl"></div>
+              <div className="relative">
+                {/* Vintage timeline line */}
+                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-600/60 via-amber-500/80 to-amber-600/60 transform -translate-y-1/2 rounded-full"></div>
                 
-                <motion.div
-                  className="p-6"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 + index * 0.2 }}
-                >
-                  <p className="text-gray-700 text-sm leading-relaxed font-medium">{c.summary}</p>
-                  {c.quote && (
-                           <motion.blockquote
-                             className="mt-4 text-sm italic text-amber-700 border-l-3 border-amber-400 pl-3 font-script bg-amber-50/50 rounded-r-lg py-2"
-                             initial={{ opacity: 0, x: -15 }}
-                             animate={{ opacity: 1, x: 0 }}
-                             transition={{ delay: 0.7 + index * 0.2 }}
-                           >
-                             &ldquo;{c.quote}&rdquo;
-                           </motion.blockquote>
-                  )}
-                </motion.div>
-
-                {/* Анимированная рамка */}
-                <motion.div
-                  className="absolute inset-0 border-2 border-amber-300/0 group-hover:border-amber-400/60 rounded-2xl transition-all duration-300"
-                  initial={false}
-                />
-              </motion.article>
-            </motion.div>
-          ))}
+                {/* Timeline items */}
+                <div className="relative flex justify-between">
+                  {timelineItems.map((item, index) => (
+                    <button
+                      key={`timeline-${index}-${item}`}
+                      className="flex flex-col items-center relative w-1/4 group cursor-pointer"
+                      onClick={() => setActiveSection(index)}
+                    >
+                      {/* Enhanced text above */}
+                      <div className="text-center mb-8 px-3">
+                        <p className={`text-sm leading-tight font-semibold transition-all duration-300 ${
+                          activeSection === index 
+                            ? 'text-amber-800 drop-shadow-md' 
+                            : 'text-amber-600 group-hover:text-amber-700'
+                        }`}>
+                          {item}
+                        </p>
         </div>
-      </div>
+
+                      {/* Enhanced circle */}
+                      <div className="absolute top-1/2 -translate-y-1/2">
+                        <div className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                          activeSection === index 
+                            ? 'bg-amber-600 border-2 border-amber-500 shadow-lg shadow-amber-600/30' 
+                            : 'bg-amber-400 group-hover:bg-amber-500 border-2 border-amber-300'
+                        }`}></div>
+                      </div>
+                      
+                      {/* Enhanced number below */}
+                      <div className="absolute top-1/2 translate-y-6">
+                        <span className={`text-sm font-bold transition-all duration-300 ${
+                          activeSection === index 
+                            ? 'text-amber-800 drop-shadow-md' 
+                            : 'text-amber-600 group-hover:text-amber-700'
+                        }`}>
+                          {index + 1}
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Spacer for sticky timeline - exact height match */}
+        {isSticky && <div className="h-32"></div>}
+
+        {/* Timeline Content Sections */}
+        <div className="mt-16">
+          {/* Section 1: Наследие «Двенадцати стульев» */}
+          {activeSection === 0 && (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+            >
+              <div className="relative">
+                <h3 className="text-2xl font-bold text-white mb-6">
+                  Наследие «Двенадцати стульев»
+                </h3>
+                <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <p>
+                    Роман Ильфа и Петрова «Двенадцать стульев» — это не просто литературное произведение, 
+                    а целая эпоха в русской культуре. Написанный в 1928 году, он стал символом 
+                    сатирического осмысления советской действительности.
+                  </p>
+                  <p>
+                    Произведение рассказывает о приключениях Остапа Бендера и Кисы Воробьянинова 
+                    в поисках сокровищ, спрятанных в одном из двенадцати стульев. Каждый стул — 
+                    это новая глава в истории их авантюр.
+                  </p>
+                </div>
+                <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-amber-400/30"></div>
+                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-amber-400/30"></div>
+              </div>
+              <div className="relative">
+                <div className="relative overflow-hidden rounded-lg shadow-2xl">
+                  <div 
+                    className="w-full h-80 bg-gradient-to-br from-amber-900/20 to-gray-800/40 flex items-center justify-center"
+                    style={{
+                      backgroundImage: 'url("/images/stul11.png")',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-transparent"></div>
+                    <div className="absolute inset-0 border-4 border-amber-400/20 rounded-lg"></div>
+                  </div>
+                </div>
+              </div>
+                </motion.div>
+          )}
+
+          {/* Section 2: Искромётная комедия */}
+          {activeSection === 1 && (
+                <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+            >
+              <div className="relative">
+                <h3 className="text-2xl font-bold text-white mb-6">
+                  Искромётная комедия
+                </h3>
+                <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <p>
+                    Юмор Ильфа и Петрова — это особый вид комедии, который сочетает в себе 
+                    остроту сатиры с теплотой человеческих отношений. Их герои не просто 
+                    смешные персонажи, а живые люди со своими слабостями и достоинствами.
+                  </p>
+                  <p>
+                    Каждая фраза, каждый диалог в романе — это маленький шедевр комедийного 
+                    искусства. Авторы умели находить смешное в самом обыденном и превращать 
+                    повседневность в источник радости.
+                  </p>
+                </div>
+                <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-amber-400/30"></div>
+                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-amber-400/30"></div>
+              </div>
+              <div className="relative">
+                <div className="relative overflow-hidden rounded-lg shadow-2xl">
+                  <div 
+                    className="w-full h-80 bg-gradient-to-br from-amber-900/20 to-gray-800/40 flex items-center justify-center"
+                    style={{
+                      backgroundImage: 'url("/images/stul13.png")',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-transparent"></div>
+                    <div className="absolute inset-0 border-4 border-amber-400/20 rounded-lg"></div>
+                  </div>
+                </div>
+              </div>
+                </motion.div>
+          )}
+
+          {/* Section 3: Современная «перезагрузка» */}
+          {activeSection === 2 && (
+                <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+            >
+              <div className="relative">
+                <h3 className="text-2xl font-bold text-white mb-6">
+                  Современная «перезагрузка»
+                </h3>
+                <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <p>
+                    Спектакль «12 стульев. Перезагрузка» даёт новую жизнь любимой классике. Владимир
+                    Зайкин бережно хранит дух Ильфа и Петрова, но приправляет его свежими и современными
+                    штрихами.
+                  </p>
+                  <p>
+                    Знакомые мотивы — погоня за сокровищами, хитроумные афёры и остроумные
+                    находки героев — здесь разворачиваются в необычном антураже: на фоне современных
+                    декораций и гротескной музыки.
+                  </p>
+                  <p>
+                    Каждый эпизод предстаёт как яркая сценка, а юмор остаётся
+                    живым и энергичным: словно герои Бендера и Воробьянинова перенеслись в наш век с
+                    мешком старых шуток.
+                  </p>
+                </div>
+                <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-amber-400/30"></div>
+                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-amber-400/30"></div>
+              </div>
+              <div className="relative">
+                <div className="relative overflow-hidden rounded-lg shadow-2xl">
+                  <div 
+                    className="w-full h-80 bg-gradient-to-br from-amber-900/20 to-gray-800/40 flex items-center justify-center"
+                    style={{
+                      backgroundImage: 'url("/images/stul11.png")',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-transparent"></div>
+                    <div className="absolute inset-0 border-4 border-amber-400/20 rounded-lg"></div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+                
+          {/* Section 4: Живая атмосфера */}
+          {activeSection === 3 && (
+                <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+            >
+              <div className="relative">
+                <h3 className="text-2xl font-bold text-white mb-6">
+                  Живая атмосфера
+                </h3>
+                <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <p>
+                    Театральная постановка создаёт особую атмосферу, где зрители становятся 
+                    свидетелями живого действия. Каждый спектакль — это уникальное событие, 
+                    где актёры и зрители создают общее пространство эмоций.
+                  </p>
+                  <p>
+                    Современные технологии и традиционные театральные приёмы объединяются, 
+                    создавая неповторимый опыт. Зрители не просто смотрят спектакль, 
+                    а становятся его частью.
+                  </p>
+                </div>
+                <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-amber-400/30"></div>
+                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-amber-400/30"></div>
+              </div>
+              <div className="relative">
+                <div className="relative overflow-hidden rounded-lg shadow-2xl">
+                  <div 
+                    className="w-full h-80 bg-gradient-to-br from-amber-900/20 to-gray-800/40 flex items-center justify-center"
+                    style={{
+                      backgroundImage: 'url("/images/stul13.png")',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-transparent"></div>
+                    <div className="absolute inset-0 border-4 border-amber-400/20 rounded-lg"></div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </div>
+
+      </Container>
     </section>
   );
 }

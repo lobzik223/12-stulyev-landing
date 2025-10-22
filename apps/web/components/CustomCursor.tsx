@@ -10,8 +10,21 @@ export default function CustomCursor() {
   const lastPosition = useRef({ x: 0, y: 0 });
   const sparkleIdRef = useRef(0);
   const [isReady, setIsReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Проверяем, является ли устройство мобильным
+    const checkIsMobile = () => {
+      return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    };
+    
+    setIsMobile(checkIsMobile());
+    
+    // Если мобильное устройство, не инициализируем курсор
+    if (checkIsMobile()) {
+      return;
+    }
+    
     // Быстрая инициализация курсора
     setIsReady(true);
     setIsVisible(true);
@@ -90,6 +103,11 @@ export default function CustomCursor() {
       document.body.style.cursor = 'auto';
     };
   }, []);
+
+  // Если мобильное устройство, не рендерим курсор
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <>
