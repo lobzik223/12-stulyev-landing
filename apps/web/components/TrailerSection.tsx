@@ -8,7 +8,10 @@ export default function TrailerSection({ data }: Readonly<{ data: Trailer }>) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-           <section id="trailer" className="py-20 bg-gray-900 text-white relative overflow-hidden">
+           <section 
+             id="trailer" 
+             className="py-20 relative overflow-hidden bg-gray-900"
+           >
              {/* Декоративные элементы */}
              <div className="absolute top-20 right-20 w-32 h-32 border border-amber-400/20 rounded-full" />
              <div className="absolute bottom-20 left-20 w-24 h-24 border border-amber-400/30 rounded-full" />
@@ -23,7 +26,7 @@ export default function TrailerSection({ data }: Readonly<{ data: Trailer }>) {
                    <div className="inline-block px-4 py-2 bg-amber-400/10 border border-amber-400/30 rounded-full text-sm font-medium text-amber-400 mb-4">
                      Видео
                    </div>
-                   <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Трейлер</h2>
+                   <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4 text-white">Трейлер</h2>
                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">{data.title}</p>
           </div>
           

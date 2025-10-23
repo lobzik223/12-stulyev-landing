@@ -3,21 +3,13 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Находим элемент EventsPreview для точного определения
-      const eventsPreview = document.querySelector('[data-section="events-preview"]');
-      if (eventsPreview) {
-        const rect = eventsPreview.getBoundingClientRect();
-        // Фон меняется когда EventsPreview появляется в viewport
-        setIsScrolled(rect.top < window.innerHeight * 0.5);
-      } else {
-        // Fallback: примерно на высоте Hero секции
-        const heroHeight = window.innerHeight * 0.7;
-        setIsScrolled(window.scrollY > heroHeight);
-      }
+      // Скрываем header при скролле вниз (после Hero секции)
+      const heroHeight = window.innerHeight * 0.8;
+      setIsVisible(window.scrollY < heroHeight);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -27,9 +19,9 @@ export default function Header() {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-gray-900/95 backdrop-blur-md shadow-lg" 
-          : "bg-transparent"
+        isVisible 
+          ? "bg-transparent" 
+          : "opacity-0 pointer-events-none"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -42,42 +34,42 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <motion.a
               href="#about"
-              className={`${isScrolled ? "text-white" : "text-gray-900"} hover:text-amber-400 transition-colors font-medium`}
+              className="text-gray-900 hover:text-amber-400 transition-colors font-medium"
               whileHover={{ y: -2 }}
             >
               О спектакле
             </motion.a>
             <motion.a
               href="#actors"
-              className={`${isScrolled ? "text-white" : "text-gray-900"} hover:text-amber-400 transition-colors font-medium`}
+              className="text-gray-900 hover:text-amber-400 transition-colors font-medium"
               whileHover={{ y: -2 }}
             >
               Артисты
             </motion.a>
             <motion.a
               href="#gallery"
-              className={`${isScrolled ? "text-white" : "text-gray-900"} hover:text-amber-400 transition-colors font-medium`}
+              className="text-gray-900 hover:text-amber-400 transition-colors font-medium"
               whileHover={{ y: -2 }}
             >
               Загляни за кулисы
             </motion.a>
             <motion.a
               href="#trailer"
-              className={`${isScrolled ? "text-white" : "text-gray-900"} hover:text-amber-400 transition-colors font-medium`}
+              className="text-gray-900 hover:text-amber-400 transition-colors font-medium"
               whileHover={{ y: -2 }}
             >
               Видео
             </motion.a>
             <motion.a
               href="#gallery"
-              className={`${isScrolled ? "text-white" : "text-gray-900"} hover:text-amber-400 transition-colors font-medium`}
+              className="text-gray-900 hover:text-amber-400 transition-colors font-medium"
               whileHover={{ y: -2 }}
             >
               Фото
             </motion.a>
             <motion.a
               href="#events"
-              className={`${isScrolled ? "text-white" : "text-gray-900"} hover:text-amber-400 transition-colors font-medium`}
+              className="text-gray-900 hover:text-amber-400 transition-colors font-medium"
               whileHover={{ y: -2 }}
             >
               Билеты
@@ -98,7 +90,7 @@ export default function Header() {
               </div>
               <a 
                 href="tel:+79045329444" 
-                className={`${isScrolled ? "text-white" : "text-gray-900"} font-medium hover:text-amber-400 transition-colors`}
+                className="text-gray-900 font-medium hover:text-amber-400 transition-colors"
               >
                 +7 (904) 532-94-44
               </a>

@@ -308,5 +308,10 @@ html {
          z-index: 1;
        }
 
+       /* Радиальный градиент для световых эффектов компаса */
+       .bg-gradient-radial {
+         background: radial-gradient(circle, var(--tw-gradient-stops));
+       }
+
 
 

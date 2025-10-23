@@ -6,7 +6,16 @@ import { useState } from "react";
 export default function GallerySection({ items }: Readonly<{ items: GalleryItem[] }>) {
   const [open, setOpen] = useState<GalleryItem|null>(null);
   return (
-           <section id="gallery" className="py-20 bg-gray-900 text-white relative overflow-hidden">
+           <section 
+             id="gallery" 
+             className="py-20 text-white relative overflow-hidden"
+             style={{
+               backgroundImage: 'url("/images/esk.png")',
+               backgroundSize: 'cover',
+               backgroundPosition: 'center',
+               backgroundRepeat: 'no-repeat'
+             }}
+           >
              {/* Декоративные элементы */}
              <div className="absolute top-20 right-20 w-32 h-32 border border-amber-400/20 rounded-full" />
              <div className="absolute bottom-20 left-20 w-24 h-24 border border-amber-400/30 rounded-full" />
